@@ -398,8 +398,9 @@ perform the upgrade if necessary.  See C<svtype>.
 /* RV upwards. However, SVf_ROK and SVp_IOK are exclusive  */
 #define SVprv_WEAKREF   0x80000000  /* Weak reference */
 
-#define _XPV_HEAD	\
-    union _xnvu xnv_u;	\
+#define _XPV_HEAD							\
+    HV*		xmg_stash;	/* class package */			\
+    union _xmgu	xmg_u;							\
     STRLEN	xpv_cur;	/* length of svu_pv as a C string */    \
     STRLEN	xpv_len 	/* allocated size */
 
@@ -453,23 +454,20 @@ struct xpvuv {
 struct xpvnv {
     _XPV_HEAD;
     union _xivu xiv_u;
+    union _xnvu xnv_u;
 };
-
-#define _XPVMG_HEAD				    \
-    union _xivu xiv_u;				    \
-    union _xmgu	xmg_u;				    \
-    HV*		xmg_stash	/* class package */
 
 /* This structure must match the beginning of struct xpvhv in hv.h. */
 struct xpvmg {
     _XPV_HEAD;
-    _XPVMG_HEAD;
+    union _xivu xiv_u;
+    union _xnvu xnv_u;
 };
 
 struct xpvlv {
     _XPV_HEAD;
-    _XPVMG_HEAD;
-
+    union _xivu xiv_u;
+    union _xnvu xnv_u;
     STRLEN	xlv_targoff;
     STRLEN	xlv_targlen;
     SV*		xlv_targ;
@@ -481,7 +479,8 @@ struct xpvlv {
    Boyer-Moore.  */
 struct xpvgv {
     _XPV_HEAD;
-    _XPVMG_HEAD;
+    union _xivu xiv_u;
+    union _xnvu xnv_u;
 };
 
 /* This structure must match XPVCV in cv.h */
@@ -489,6 +488,7 @@ struct xpvgv {
 typedef U16 cv_flags_t;
 
 #define _XPVCV_COMMON								\
+    union _xivu xiv_u;								\
     HV *	xcv_stash;							\
     union {									\
 	OP *	xcv_start;							\
@@ -509,7 +509,6 @@ typedef U16 cv_flags_t;
 
 struct xpvfm {
     _XPV_HEAD;
-    _XPVMG_HEAD;
     _XPVCV_COMMON;
 };
 
@@ -545,7 +544,7 @@ struct xpvfm {
 
 struct xpvio {
     _XPV_HEAD;
-    _XPVMG_HEAD;
+    union _xivu xiv_u;
     _XPVIO_TAIL;
 };
 
