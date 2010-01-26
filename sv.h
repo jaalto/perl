@@ -1072,6 +1072,7 @@ the scalar's value cannot change unless written to.
 	    assert(SvTYPE(_svivx) != SVt_PVCV);				\
 	    assert(SvTYPE(_svivx) != SVt_PVFM);				\
 	    assert(SvTYPE(_svivx) != SVt_PVIO);				\
+	    assert(SvTYPE(_svivx) != SVt_REGEXP);			\
 	    assert(!isGV_with_GP(_svivx));				\
 	    &(((XPVIV*) MUTABLE_PTR(SvANY(_svivx)))->xiv_iv);		\
 	 }))
@@ -1083,6 +1084,7 @@ the scalar's value cannot change unless written to.
 	    assert(SvTYPE(_svuvx) != SVt_PVCV);				\
 	    assert(SvTYPE(_svuvx) != SVt_PVFM);				\
 	    assert(SvTYPE(_svuvx) != SVt_PVIO);				\
+	    assert(SvTYPE(_svuvx) != SVt_REGEXP);			\
 	    assert(!isGV_with_GP(_svuvx));				\
 	    &(((XPVUV*) MUTABLE_PTR(SvANY(_svuvx)))->xuv_uv);		\
 	 }))
@@ -1094,6 +1096,7 @@ the scalar's value cannot change unless written to.
 	    assert(SvTYPE(_svnvx) != SVt_PVCV);				\
 	    assert(SvTYPE(_svnvx) != SVt_PVFM);				\
 	    assert(SvTYPE(_svnvx) != SVt_PVIO);				\
+	    assert(SvTYPE(_svnvx) != SVt_REGEXP);			\
 	    assert(!isGV_with_GP(_svnvx));				\
 	    &(((XPVNV*) MUTABLE_PTR(SvANY(_svnvx)))->xnv_u.xnv_nv);	\
 	 }))
