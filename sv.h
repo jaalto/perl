@@ -420,9 +420,8 @@ union _xnvu {
 
 union _xivu {
     IV	    xivu_iv;		/* integer value */
-				/* xpvfm: lines */
     UV	    xivu_uv;
-    I32	    xivu_i32;
+    I32	    xivu_i32;		/* BmUSEFUL */
     HEK *   xivu_namehek;	/* xpvlv, xpvgv: GvNAME */
 };
 
@@ -486,7 +485,6 @@ struct xpvgv {
 typedef U16 cv_flags_t;
 
 #define _XPVCV_COMMON								\
-    union _xivu xiv_u;								\
     HV *	xcv_stash;							\
     union {									\
 	OP *	xcv_start;							\
@@ -508,6 +506,7 @@ typedef U16 cv_flags_t;
 struct xpvfm {
     _XPV_HEAD;
     _XPVCV_COMMON;
+    IV		xfm_lines;
 };
 
 #define _XPVIO_TAIL							\
@@ -1306,7 +1305,7 @@ the scalar's value cannot change unless written to.
 
 #endif
 
-#define FmLINES(sv)	((XPVFM*)  SvANY(sv))->xiv_u.xivu_iv
+#define FmLINES(sv)	((XPVFM*)  SvANY(sv))->xfm_lines
 
 #define LvTYPE(sv)	((XPVLV*)  SvANY(sv))->xlv_type
 #define LvTARG(sv)	((XPVLV*)  SvANY(sv))->xlv_targ
