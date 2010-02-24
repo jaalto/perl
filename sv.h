@@ -1933,6 +1933,7 @@ struct clone_params {
   AV* stashes;
   UV  flags;
   PerlInterpreter *proto_perl;
+  PerlInterpreter *new_perl;
 };
 
 /*

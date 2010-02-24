@@ -11956,7 +11956,12 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
 #endif		/* PERL_IMPLICIT_SYS */
 
     param->flags = flags;
+    /* Nothing in the core code uses this, but we make it available to
+       extensions (using mg_dup).  */
     param->proto_perl = proto_perl;
+    /* Likely nothing will use this, but it is initialised to be consistent
+       with Perl_clone_params_new().  */
+    param->proto_perl = my_perl;
 
     INIT_TRACK_MEMPOOL(my_perl->Imemory_debug_header, my_perl);
 
@@ -12581,6 +12586,55 @@ perl_clone_using(PerlInterpreter *proto_perl, UV flags,
     }
 
     return my_perl;
+}
+
+void
+Perl_clone_params_del(CLONE_PARAMS *param)
+{
+    PerlInterpreter *const was = PERL_GET_THX;
+    PerlInterpreter *const to = param->new_perl;
+    dTHXa(to);
+
+    PERL_ARGS_ASSERT_CLONE_PARAMS_DEL;
+
+    PERL_SET_THX(to);
+
+    SvREFCNT_dec(param->stashes);
+
+    Safefree(param);
+
+    if (was != to) {
+	PERL_SET_THX(was);
+    }
+}
+
+CLONE_PARAMS *
+Perl_clone_params_new(PerlInterpreter *const from, PerlInterpreter *const to)
+{
+    /* Need to play this game, as newAV() can call safesysmalloc(), and that
+       does a dTHX; to get the context from thread local storage.
+       FIXME - under PERL_CORE Newx(), Safefree() and friends should expand to
+       a version that passes in my_perl.  */
+    PerlInterpreter *const was = PERL_GET_THX;
+    CLONE_PARAMS *param;
+
+    PERL_ARGS_ASSERT_CLONE_PARAMS_NEW;
+
+    PERL_SET_THX(to);
+
+    /* Given that we've set the context, we can do this unshared.  */
+    Newx(param, 1, CLONE_PARAMS);
+
+    param->flags = 0;
+    param->proto_perl = from;
+    param->new_perl = to;
+    param->stashes = (AV *)Perl_newSV_type(to, SVt_PVAV);
+    AvREAL_off(param->stashes);
+
+    if (was != to) {
+	PERL_SET_THX(was);
+    }
+    return param;
 }
 
 #endif /* USE_ITHREADS */
