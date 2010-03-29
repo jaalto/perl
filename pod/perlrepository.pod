@@ -725,7 +725,7 @@ you should clone:
 The same patch as above, using github might look like this:
 
   % cd perl-github
-  % git remote add upstream git://github.com/github/perl.git
+  % git remote add upstream git://perl5.git.perl.org/perl.git
   % git pull upstream blead
   % git checkout -b orange
   % perl -pi -e 's{Leon Brocard}{Orange Brocard}' AUTHORS
@@ -773,6 +773,20 @@ And then push back to the repository:
 Individual committers should create topic branches under
 B<yourname>/B<some_descriptive_name>. Other committers should check
 with a topic branch's creator before making any change to it.
+
+The simplest way to create a remote topic branch that works on all
+versions of git is to push the current head as a new branch on the
+remote, then check it out locally:
+
+  $ branch="$yourname/$some_descriptive_name"
+  $ git push origin HEAD:$branch
+  $ git checkout -b $branch origin/$branch
+
+Users of git 1.7 or newer can do it in a more obvious manner:
+
+  $ branch="$yourname/$some_descriptive_name"
+  $ git checkout -b $branch
+  $ git push origin -u $branch
 
 If you are not the creator of B<yourname>/B<some_descriptive_name>, you
 might sometimes find that the original author has edited the branch's

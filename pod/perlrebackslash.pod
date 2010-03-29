@@ -31,10 +31,10 @@ takes away the special meaning (if any) of the character following it.
 
 If the character following the backslash is an ASCII letter or an ASCII digit,
 then the sequence may be special; if so, it's listed below. A few letters have
-not been used yet, and escaping them with a backslash is safe for now, but a
-future version of Perl may assign a special meaning to it. However, if you
-have warnings turned on, Perl will issue a warning if you use such a sequence.
-[1].
+not been used yet, so escaping them with a backslash doesn't change them to be
+special.  A future version of Perl may assign a special meaning to them, so if
+you have warnings turned on, Perl will issue a warning if you use such a
+sequence.  [1].
 
 It is however guaranteed that backslash or escape sequences never have a
 punctuation character following the backslash, not now, and not in a future
@@ -78,8 +78,8 @@ as C<Not in [].>
  \f                Form feed.
  \g{}, \g1         Named, absolute or relative backreference.  Not in [].
  \G                Pos assertion.  Not in [].
- \h                Character class for horizontal white space.
- \H                Character class for non horizontal white space.
+ \h                Character class for horizontal whitespace.
+ \H                Character class for non horizontal whitespace.
  \k{}, \k<>, \k''  Named backreference.  Not in [].
  \K                Keep the stuff left of \K.  Not in [].
  \l                Lowercase next character.  Not in [].
@@ -92,13 +92,13 @@ as C<Not in [].>
  \Q                Quotemeta till \E.  Not in [].
  \r                Return character.
  \R                Generic new line.  Not in [].
- \s                Character class for white space.
- \S                Character class for non white space.
+ \s                Character class for whitespace.
+ \S                Character class for non whitespace.
  \t                Tab character.
  \u                Titlecase next character.  Not in [].
  \U                Uppercase till \E.  Not in [].
- \v                Character class for vertical white space.
- \V                Character class for non vertical white space.
+ \v                Character class for vertical whitespace.
+ \V                Character class for non vertical whitespace.
  \w                Character class for word characters.
  \W                Character class for non-word characters.
  \x{}, \x00        Hexadecimal escape sequence.
@@ -111,8 +111,8 @@ as C<Not in [].>
 =head3  Fixed characters
 
 A handful of characters have a dedicated I<character escape>. The following
-table shows them, along with their code points (in decimal and hex), their
-ASCII name, the control escape (see below) and a short description.
+table shows them, along with their ASCII code points (in decimal and hex),
+their ASCII name, the control escape (see below) and a short description.
 
  Seq.  Code Point  ASCII   Cntr    Description.
        Dec    Hex
@@ -210,7 +210,7 @@ Note that a character that is expressed as an octal escape is considered
 as a character without special meaning by the regex engine, and will match
 "as is".
 
-=head4 Examples
+=head4 Examples (assuming an ASCII platform)
 
  $str = "Perl";
  $str =~ /\120/;    # Match, "\120" is "P".
@@ -253,7 +253,7 @@ matched as is.
 
 =head3 Hexadecimal escapes
 
-Hexadecimal escapes start with C<\x> and are then either followed by
+Hexadecimal escapes start with C<\x> and are then either followed by a
 two digit hexadecimal number, or a hexadecimal number of arbitrary length
 surrounded by curly braces. The hexadecimal number is the code point of
 the character you want to express.
@@ -264,7 +264,7 @@ as a character without special meaning by the regex engine, and will match
 
 Mnemonic: heI<x>adecimal.
 
-=head4 Examples
+=head4 Examples (assuming an ASCII platform)
 
  $str = "Perl";
  $str =~ /\x50/;    # Match, "\x50" is "P".
@@ -316,15 +316,15 @@ the character classes are written as a backslash sequence. We will briefly
 discuss those here; full details of character classes can be found in
 L<perlrecharclass>.
 
-C<\w> is a character class that matches any I<word> character (letters,
-digits, underscore). C<\d> is a character class that matches any digit,
-while the character class C<\s> matches any white space character.
+C<\w> is a character class that matches any single I<word> character (letters,
+digits, underscore). C<\d> is a character class that matches any decimal digit,
+while the character class C<\s> matches any whitespace character.
 New in perl 5.10.0 are the classes C<\h> and C<\v> which match horizontal
-and vertical white space characters.
+and vertical whitespace characters.
 
 The uppercase variants (C<\W>, C<\D>, C<\S>, C<\H>, and C<\V>) are
 character classes that match any character that isn't a word character,
-digit, white space, horizontal white space or vertical white space.
+digit, whitespace, horizontal whitespace nor vertical whitespace.
 
 Mnemonics: I<w>ord, I<d>igit, I<s>pace, I<h>orizontal, I<v>ertical.
 
@@ -528,21 +528,23 @@ L<named or numbered character|/Named or numbered characters>.
 Mnemonic: Complement of I<\n>.
 
 =item \R
+X<\R>
 
 C<\R> matches a I<generic newline>, that is, anything that is considered
 a newline by Unicode. This includes all characters matched by C<\v>
-(vertical white space), and the multi character sequence C<"\x0D\x0A">
+(vertical whitespace), and the multi character sequence C<"\x0D\x0A">
 (carriage return followed by a line feed, aka the network newline, or
-the newline used in Windows text files). C<\R> is equivalent with
-C<< (?>\x0D\x0A)|\v) >>. Since C<\R> can match a more than one character,
-it cannot be put inside a bracketed character class; C</[\R]/> is an error.
-C<\R> was introduced in perl 5.10.0.
+the newline used in Windows text files). C<\R> is equivalent to
+C<< (?>\x0D\x0A)|\v) >>. Since C<\R> can match a sequence of more than one
+character, it cannot be put inside a bracketed character class; C</[\R]/> is an
+error; use C<\v> instead.  C<\R> was introduced in perl 5.10.0.
 
 Mnemonic: none really. C<\R> was picked because PCRE already uses C<\R>,
 and more importantly because Unicode recommends such a regular expression
 metacharacter, and suggests C<\R> as the notation.
 
 =item \X
+X<\X>
 
 This matches a Unicode I<extended grapheme cluster>.
 

@@ -2,7 +2,7 @@ package Module::CoreList;
 use strict;
 use vars qw/$VERSION %released %version %families %upstream
 	    %bug_tracker %deprecated/;
-$VERSION = '2.27';
+$VERSION = '2.29';
 
 =head1 NAME
 
@@ -13426,7 +13426,7 @@ for my $version ( sort { $a <=> $b } keys %released ) {
 	'B'                     => '1.23',
 	'B::Concise'            => '0.78',
 	'B::Debug'              => '1.12',
-	'B::Deparse'            => '0.95',
+	'B::Deparse'            => '0.96',
 	'B::Lint'               => '1.11_01',
 	'B::Lint::Debug'        => '0.01',
 	'B::Showlex'            => '1.02',
@@ -13449,7 +13449,7 @@ for my $version ( sort { $a <=> $b } keys %released ) {
 	'CPAN::Complete'        => '5.5',
 	'CPAN::Debug'           => '5.5001',
 	'CPAN::DeferredCode'    => '5.50',
-	'CPAN::Distribution'    => '1.9456',
+	'CPAN::Distribution'    => '1.9456_01',
 	'CPAN::Distroprefs'     => '6',
 	'CPAN::Distrostatus'    => '5.5',
 	'CPAN::Exception::RecursiveDependency'=> '5.5',
@@ -13774,7 +13774,7 @@ for my $version ( sort { $a <=> $b } keys %released ) {
 	'Module::Build::PodParser'=> '0.3603',
 	'Module::Build::Version'=> '0.77',
 	'Module::Build::YAML'   => '1.40',
-	'Module::CoreList'      => '2.27',
+	'Module::CoreList'      => '2.29',
 	'Module::Load'          => '0.16',
 	'Module::Load::Conditional'=> '0.34',
 	'Module::Loaded'        => '0.06',
@@ -13881,7 +13881,7 @@ for my $version ( sort { $a <=> $b } keys %released ) {
 	'SelectSaver'           => '1.02',
 	'SelfLoader'            => '1.17',
 	'Shell'                 => '0.72_01',
-	'Socket'                => '1.86',
+	'Socket'                => '1.87',
 	'Storable'              => '2.22',
 	'Switch'                => '2.16',
 	'Symbol'                => '1.07',

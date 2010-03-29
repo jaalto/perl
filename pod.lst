@@ -83,7 +83,7 @@ h Reference Manual
   perluniintro		Perl Unicode introduction
   perlunicode		Perl Unicode support
   perlunifaq		Perl Unicode FAQ
-g perluniprops		Complete index of Unicode Version 5.1.0 properties
+g perluniprops		Index of Unicode Version 5.2.0 properties in Perl
   perlunitut		Perl Unicode tutorial
   perlebcdic		Considerations for running Perl on EBCDIC platforms
 
@@ -137,7 +137,6 @@ h Miscellaneous
   perlhist		Perl history records
 D perl5120delta		Perl changes in version 5.12.0
 d perldelta		Perl changes since previous version
-  perl5116delta		Perl changes in version 5.11.6
   perl5115delta		Perl changes in version 5.11.5
   perl5114delta		Perl changes in version 5.11.4
   perl5113delta		Perl changes in version 5.11.3
