@@ -7133,7 +7133,7 @@ computes the same number as the System V sum program:
 
 The following efficiently counts the number of set bits in a bit vector:
 
-    $setbits = unpack("%32b*", $selectmask);
+    $setbits = unpack "%32b*", $selectmask;
 
 The C<p> and C<P> formats should be used with care.  Since Perl
 has no way of checking whether the value passed to C<unpack()>
