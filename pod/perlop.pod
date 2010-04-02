@@ -465,7 +465,7 @@ Binary "&" returns its operands ANDed together bit by bit.
 Note that "&" has lower priority than relational operators, so for example
 the brackets are essential in a test like
 
-	print "Even\n" if ($x & 1) == 0;
+    print "Even\n" if ($x & 1) == 0;
 
 =head2 Bitwise Or and Exclusive Or
 X<operator, bitwise, or> X<bitwise or> X<|> X<operator, bitwise, xor>
@@ -480,7 +480,7 @@ Binary "^" returns its operands XORed together bit by bit.
 Note that "|" and "^" have lower priority than relational operators, so
 for example the brackets are essential in a test like
 
-	print "false\n" if (8 | 2) != 10;
+    print "false\n" if (8 | 2) != 10;
 
 =head2 C-style Logical And
 X<&&> X<logical and> X<operator, logical, and>
