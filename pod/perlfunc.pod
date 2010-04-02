@@ -6064,7 +6064,7 @@ or that Perl were specifically compiled to support quads.) You can find out
 whether your Perl supports quads via L<Config>:
 
     use Config;
-    if ($Config{use64bitint} eq "define" || $Config{longsize} >= 8) {
+    if ($Config{use64bitint} eq "define"  or  $Config{longsize} >= 8) {
         print "Nice quads!\n";
     }
 
@@ -6075,7 +6075,7 @@ platform supports them. You can find out whether your Perl supports long
 doubles via L<Config>:
 
     use Config;
-    print "long doubles\n" if $Config{d_longdbl} eq "define";
+    print "long doubles\n"  if  $Config{d_longdbl} eq "define";
 
 You can find out whether Perl considers "long double" to be the default
 floating-point size to use on your platform via L<Config>:
@@ -6087,9 +6087,9 @@ floating-point size to use on your platform via L<Config>:
 
 It can also be that long doubles and doubles are the same thing:
 
-        use Config;
-        ($Config{doublesize} == $Config{longdblsize}) &&
-                print "doubles are long doubles\n";
+    use Config;
+    ($Config{doublesize} == $Config{longdblsize}) and
+	print "doubles are long doubles\n";
 
 The size specifier C<V> has no effect for Perl code, but is supported for
 compatibility with XS code.  It means "use the standard size for a Perl
