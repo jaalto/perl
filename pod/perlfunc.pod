@@ -7114,7 +7114,7 @@ Here's a subroutine that does substring:
 
 and then there's
 
-    sub ordinal { unpack("W",$_[0]); } # same as ord()
+    sub ordinal { unpack("W", $_[0]); } # same as ord()
 
 In addition to fields allowed in pack(), you may prefix a field with
 a %<number> to indicate that
@@ -7128,7 +7128,7 @@ computes the same number as the System V sum program:
 
     $checksum = do {
         local $/;  # slurp!
-        unpack("%32W*",<>) % 65535;
+        unpack("%32W*", <>) % 65535;
     };
 
 The following efficiently counts the number of set bits in a bit vector:
