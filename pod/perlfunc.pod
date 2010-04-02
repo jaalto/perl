@@ -2290,7 +2290,7 @@ addresses returned by the corresponding library call.  In the
 Internet domain, each address is four bytes long; you can unpack it
 by saying something like:
 
-    ($a,$b,$c,$d) = unpack('W4',$addr[0]);
+    ($a, $b, $c, $d) = unpack('W4',$addr[0]);
 
 The Socket library makes this slightly easier:
 
