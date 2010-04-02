@@ -43,8 +43,9 @@ system, or you can retrieve them from the Config module.  Set up an
 indexed by name to get the number:
 
     use Config;
-    defined $Config{sig_name} || die "No sigs?";
-    foreach $name (split(' ', $Config{sig_name})) {
+    defined $Config{sig_name} or die "No sigs?";
+
+    for my $name (split ' ', $Config{sig_name}) {
 	$signo{$name} = $i;
 	$signame[$i] = $name;
 	$i++;
@@ -53,6 +54,7 @@ indexed by name to get the number:
 So to check whether signal 17 and SIGALRM were the same, do just this:
 
     print "signal #17 = $signame[17]\n";
+
     if ($signo{ALRM}) {
 	print "SIGALRM is $signo{ALRM}\n";
     }
@@ -79,6 +81,7 @@ values are "inherited" by functions called from within that block.)
 	local $SIG{INT} = 'IGNORE';
 	&more_functions;
     }
+
     sub more_functions {
 	# interrupts still ignored, for now...
     }
