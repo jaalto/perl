@@ -681,7 +681,7 @@ return an alpha:
 
 To get lower-case greek letters, use this instead:
 
-    my @greek_small =  map { chr } ( ord("\N{alpha}") .. ord("\N{omega}") );
+    my @greek_small =  map { chr } ( ord "\N{alpha}" .. ord "\N{omega}" );
 
 Because each operand is evaluated in integer form, C<2.18 .. 3.14> will
 return two elements in list context.
