@@ -3308,19 +3308,22 @@ General examples:
 
     # process argument list of files along with any includes
 
-    foreach $file (@ARGV) {
+    for my $file (@ARGV) {
         process($file, 'fh00');
     }
 
     sub process {
         my($filename, $input) = @_;
+
         $input++;    # this is a string increment
+
         unless (open($input, $filename)) {
             print STDERR "Can't open $filename: $!\n";
             return;
         }
 
         local $_;
+
         while (<$input>) {    # note use of indirection
             if (/^#include "(.*)"/) {
                 process($1, $input);
