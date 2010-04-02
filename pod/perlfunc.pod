@@ -5840,36 +5840,36 @@ useful.
 
 Perl's C<sprintf> permits the following universally-known conversions:
 
-   %%    a percent sign
-   %c    a character with the given number
-   %s    a string
-   %d    a signed integer, in decimal
-   %u    an unsigned integer, in decimal
-   %o    an unsigned integer, in octal
-   %x    an unsigned integer, in hexadecimal
-   %e    a floating-point number, in scientific notation
-   %f    a floating-point number, in fixed decimal notation
-   %g    a floating-point number, in %e or %f notation
+    %%    a percent sign
+    %c    a character with the given number
+    %s    a string
+    %d    a signed integer, in decimal
+    %u    an unsigned integer, in decimal
+    %o    an unsigned integer, in octal
+    %x    an unsigned integer, in hexadecimal
+    %e    a floating-point number, in scientific notation
+    %f    a floating-point number, in fixed decimal notation
+    %g    a floating-point number, in %e or %f notation
 
 In addition, Perl permits the following widely-supported conversions:
 
-   %X    like %x, but using upper-case letters
-   %E    like %e, but using an upper-case "E"
-   %G    like %g, but with an upper-case "E" (if applicable)
-   %b    an unsigned integer, in binary
-   %B    like %b, but using an upper-case "B" with the # flag
-   %p    a pointer (outputs the Perl value's address in hexadecimal)
-   %n    special: *stores* the number of characters output so far
-        into the next variable in the parameter list
+    %X    like %x, but using upper-case letters
+    %E    like %e, but using an upper-case "E"
+    %G    like %g, but with an upper-case "E" (if applicable)
+    %b    an unsigned integer, in binary
+    %B    like %b, but using an upper-case "B" with the # flag
+    %p    a pointer (outputs the Perl value's address in hexadecimal)
+    %n    special: *stores* the number of characters output so far
+	 into the next variable in the parameter list
 
 Finally, for backward (and we do mean "backward") compatibility, Perl
 permits these unnecessary but widely-supported conversions:
 
-   %i    a synonym for %d
-   %D    a synonym for %ld
-   %U    a synonym for %lu
-   %O    a synonym for %lo
-   %F    a synonym for %f
+    %i    a synonym for %d
+    %D    a synonym for %ld
+    %U    a synonym for %lu
+    %O    a synonym for %lo
+    %F    a synonym for %f
 
 Note that the number of exponent digits in the scientific notation produced
 by C<%e>, C<%E>, C<%g> and C<%G> for numbers with the modulus of the
