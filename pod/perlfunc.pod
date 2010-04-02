@@ -6221,9 +6221,9 @@ the file opened via FILEHANDLE or DIRHANDLE, or named by EXPR.  If EXPR is
 omitted, it stats C<$_>.  Returns the empty list if C<stat> fails.  Typically
 used as follows:
 
-    ($dev,$ino,$mode,$nlink,$uid,$gid,$rdev,$size,
-       $atime,$mtime,$ctime,$blksize,$blocks)
-           = stat($filename);
+    ($dev, $ino, $mode, $nlink, $uid, $gid, $rdev, $size,
+       $atime, $mtime, $ctime, $blksize, $blocks)
+           = stat $filename;
 
 Not all fields are supported on all filesystem types.  Here are the
 meanings of the fields:
