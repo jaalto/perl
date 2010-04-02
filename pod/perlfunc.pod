@@ -4438,17 +4438,19 @@ If you're planning to filetest the return values out of a C<readdir>, you'd
 better prepend the directory in question.  Otherwise, because we didn't
 C<chdir> there, it would have been testing the wrong file.
 
-    opendir(my $dh, $some_dir) || die "can't opendir $some_dir: $!";
+    opendir(my $dh, $some_dir) or die "can't opendir $some_dir: $!";
     @dots = grep { /^\./ && -f "$some_dir/$_" } readdir($dh);
     closedir $dh;
 
 As of Perl 5.11.2 you can use a bare C<readdir> in a C<while> loop,
 which will set C<$_> on every iteration.
 
-    opendir(my $dh, $some_dir) || die;
-    while(readdir $dh) {
+    opendir my $dh, $some_dir  or die;
+
+    while (readdir $dh) {
         print "$some_dir/$_\n";
     }
+
     closedir $dh;
 
 =item readline EXPR
