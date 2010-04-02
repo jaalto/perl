@@ -461,7 +461,7 @@ Examples:
 	$elem *= 2;
     }
 
-    for $count (10,9,8,7,6,5,4,3,2,1,'BOOM') {
+    for $count (10, 9, 8, 7, 6, 5, 4, 3, 2, 1,'BOOM') {
 	print $count, "\n"; sleep(1);
     }
 
