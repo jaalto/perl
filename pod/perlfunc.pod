@@ -2370,9 +2370,11 @@ An example to test whether Nagle's algorithm is turned on on a socket:
 
     defined(my $tcp = getprotobyname("tcp"))
         or die "Could not determine the protocol number for tcp";
+
     # my $tcp = IPPROTO_TCP; # Alternative
     my $packed = getsockopt($socket, $tcp, TCP_NODELAY)
         or die "getsockopt TCP_NODELAY: $!";
+
     my $nodelay = unpack("I", $packed);
     print "Nagle's algorithm is turned ", $nodelay ? "off\n" : "on\n";
 
