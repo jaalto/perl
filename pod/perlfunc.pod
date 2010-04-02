@@ -6252,7 +6252,7 @@ If C<stat> is passed the special filehandle consisting of an underline, no
 stat is done, but the current contents of the stat structure from the
 last C<stat>, C<lstat>, or filetest are returned.  Example:
 
-    if (-x $file && (($d) = stat(_)) && $d < 0) {
+    if (-x $file  and  $d = stat _  and   $d < 0) {
         print "$file is executable NFS file\n";
     }
 
