@@ -5889,46 +5889,46 @@ An explicit format parameter index, such as C<2$>. By default sprintf
 will format the next unused argument in the list, but this allows you
 to take the arguments out of order:
 
-  printf '%2$d %1$d', 12, 34;      # prints "34 12"
-  printf '%3$d %d %1$d', 1, 2, 3;  # prints "3 1 1"
+    printf '%2$d %1$d', 12, 34;      # prints "34 12"
+    printf '%3$d %d %1$d', 1, 2, 3;  # prints "3 1 1"
 
 =item flags
 
 one or more of:
 
-   space   prefix non-negative number with a space
-   +       prefix non-negative number with a plus sign
-   -       left-justify within the field
-   0       use zeros, not spaces, to right-justify
-   #       ensure the leading "0" for any octal,
-           prefix non-zero hexadecimal with "0x" or "0X",
-           prefix non-zero binary with "0b" or "0B"
+    space   prefix non-negative number with a space
+    +       prefix non-negative number with a plus sign
+    -       left-justify within the field
+    0       use zeros, not spaces, to right-justify
+    #       ensure the leading "0" for any octal,
+	    prefix non-zero hexadecimal with "0x" or "0X",
+	    prefix non-zero binary with "0b" or "0B"
 
 For example:
 
-  printf '<% d>',  12;   # prints "< 12>"
-  printf '<%+d>',  12;   # prints "<+12>"
-  printf '<%6s>',  12;   # prints "<    12>"
-  printf '<%-6s>', 12;   # prints "<12    >"
-  printf '<%06s>', 12;   # prints "<000012>"
-  printf '<%#o>',  12;   # prints "<014>"
-  printf '<%#x>',  12;   # prints "<0xc>"
-  printf '<%#X>',  12;   # prints "<0XC>"
-  printf '<%#b>',  12;   # prints "<0b1100>"
-  printf '<%#B>',  12;   # prints "<0B1100>"
+    printf '<% d>',  12;   # prints "< 12>"
+    printf '<%+d>',  12;   # prints "<+12>"
+    printf '<%6s>',  12;   # prints "<    12>"
+    printf '<%-6s>', 12;   # prints "<12    >"
+    printf '<%06s>', 12;   # prints "<000012>"
+    printf '<%#o>',  12;   # prints "<014>"
+    printf '<%#x>',  12;   # prints "<0xc>"
+    printf '<%#X>',  12;   # prints "<0XC>"
+    printf '<%#b>',  12;   # prints "<0b1100>"
+    printf '<%#B>',  12;   # prints "<0B1100>"
 
 When a space and a plus sign are given as the flags at once,
 a plus sign is used to prefix a positive number.
 
-  printf '<%+ d>', 12;   # prints "<+12>"
-  printf '<% +d>', 12;   # prints "<+12>"
+    printf '<%+ d>', 12;   # prints "<+12>"
+    printf '<% +d>', 12;   # prints "<+12>"
 
 When the # flag and a precision are given in the %o conversion,
 the precision is incremented if it's necessary for the leading "0".
 
-  printf '<%#.5o>', 012;      # prints "<00012>"
-  printf '<%#.5o>', 012345;   # prints "<012345>"
-  printf '<%#.0o>', 0;        # prints "<0>"
+    printf '<%#.5o>', 012;      # prints "<00012>"
+    printf '<%#.5o>', 012345;   # prints "<012345>"
+    printf '<%#.0o>', 0;        # prints "<0>"
 
 =item vector flag
 
