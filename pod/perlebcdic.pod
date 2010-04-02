@@ -600,7 +600,7 @@ If you would rather see it in CCSID 1047 order then change the digit
 
 =back
 
-    perl -ne 'if(/.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/)'\
+    perl -ne 'if (/.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/)'\
      -e '{push(@l,$_)}' \
      -e 'END{print map{$_->[0]}' \
      -e '          sort{$a->[1] <=> $b->[1]}' \
