@@ -951,11 +951,11 @@ This shows the sorts of output the C<l> command can produce:
     DB<<13>> l
   101:                @i{@i} = ();
   102:b               @isa{@i,$pack} = ()
-  103                     if(exists $i{$prevpack} || exists $isa{$pack});
+  103                     if (exists $i{$prevpack} || exists $isa{$pack});
   104             }
   105
   106             next
-  107==>              if(exists $isa{$pack});
+  107==>              if (exists $isa{$pack});
   108
   109:a           if ($extra-- > 0) {
   110:                %isa = ($pack,1);
