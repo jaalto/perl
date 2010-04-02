@@ -6286,7 +6286,7 @@ You can import symbolic mode constants (C<S_IF*>) and functions
 
     use Fcntl ':mode';
 
-    $mode = (stat($filename))[2];
+    $mode = (stat $filename)[2];
 
     $user_rwx      = ($mode & S_IRWXU) >> 6;
     $group_read    = ($mode & S_IRGRP) >> 3;
