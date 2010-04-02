@@ -7444,15 +7444,19 @@ Here is an example to illustrate how the bits actually fall in place:
     ------------------------------------------------------------------
     EOT
 
-    for $w (0..3) {
+    for my $w (0..3) {
         $width = 2**$w;
-        for ($shift=0; $shift < $width; ++$shift) {
-            for ($off=0; $off < 32/$width; ++$off) {
-                $str = pack("B*", "0"x32);
+
+        for ( $shift = 0; $shift < $width; ++$shift ) {
+            for ( $off = 0; $off < 32 / $width; ++$off ) {
+                $str = pack "B*", "0"x32;
                 $bits = (1<<$shift);
+
                 vec($str, $off, $width) = $bits;
-                $res = unpack("b*",$str);
-                $val = unpack("V", $str);
+
+                $res = unpack "b*",$str;
+                $val = unpack "V", $str;
+
                 write;
             }
         }
