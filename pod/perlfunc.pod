@@ -7050,8 +7050,11 @@ parameter.  Examples:
     undef %hash;
     undef &mysub;
     undef *xyz;       # destroys $xyz, @xyz, %xyz, &xyz, etc.
+
     return (wantarray ? (undef, $errmsg) : undef) if $they_blew_it;
+
     select undef, undef, undef, 0.25;
+
     ($a, $b, undef, $c) = &foo;       # Ignore third value returned
 
 Note that this is a unary operator, not a list operator.
