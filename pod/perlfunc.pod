@@ -4537,7 +4537,7 @@ C<@ARGV> yourself since C<eof> handles C<ARGV> differently.
     foreach my $arg (@ARGV) {
         open my $fh, "<", $arg  or warn "Can't open $arg: $!";
 
-        while ( ! eof($fh) ) {
+        while ( ! eof $fh ) {
             defined( $_ = <$fh> )
                 or die "readline failed for $arg: $!";
             ...
