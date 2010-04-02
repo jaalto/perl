@@ -1232,11 +1232,11 @@ of composite types">.
 
 The following (inefficiently) deletes all the values of %HASH and @ARRAY:
 
-    foreach $key (keys %HASH) {
+    for my $key (keys %HASH) {
         delete $HASH{$key};
     }
 
-    foreach $index (0 .. $#ARRAY) {
+    for my $index (0 .. $#ARRAY) {
         delete $ARRAY[$index];
     }
 
