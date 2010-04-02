@@ -7076,8 +7076,8 @@ On error, C<unlink> will not tell you which files it could not remove.
 If you want to know which files you could not remove, try them one
 at a time:
 
-     foreach my $file ( @goners ) {
-         unlink $file or warn "Could not unlink $file: $!";
+     for my $file ( @goners ) {
+         unlink $file  or  warn "Could not unlink $file: $!";
      }
 
 Note: C<unlink> will not attempt to delete directories unless you are
