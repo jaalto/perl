@@ -4658,10 +4658,11 @@ Builtin types include:
 If the referenced object has been blessed into a package, then that package
 name is returned instead.  You can think of C<ref> as a C<typeof> operator.
 
-    if (ref($r) eq "HASH") {
+    if (ref $r eq "HASH") {
         print "r is a reference to a hash.\n";
     }
-    unless (ref($r)) {
+
+    unless (ref $r) {
         print "r is not a reference at all.\n";
     }
 
