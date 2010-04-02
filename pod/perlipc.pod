@@ -780,6 +780,7 @@ pseudo-ttys to make your program behave more reasonably:
 
     require 'Comm.pl';
     $ph = open_proc('cat -n');
+
     for (1..10) {
 	print $ph "a line\n";
 	print "got back ", scalar <$ph>;
