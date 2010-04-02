@@ -4147,17 +4147,23 @@ Examples:
 
     $foo = pack("WWWW",65,66,67,68);
     # foo eq "ABCD"
+
     $foo = pack("W4",65,66,67,68);
     # same thing
+
     $foo = pack("W4",0x24b6,0x24b7,0x24b8,0x24b9);
     # same thing with Unicode circled letters.
+
     $foo = pack("U4",0x24b6,0x24b7,0x24b8,0x24b9);
     # same thing with Unicode circled letters. You don't get the UTF-8
     # bytes because the U at the start of the format caused a switch to
     # U0-mode, so the UTF-8 bytes get joined into characters
+
     $foo = pack("C0U4",0x24b6,0x24b7,0x24b8,0x24b9);
     # foo eq "\xe2\x92\xb6\xe2\x92\xb7\xe2\x92\xb8\xe2\x92\xb9"
     # This is the UTF-8 encoding of the string in the previous example
+
+    # ...................................................................
 
     $foo = pack("ccxxcc",65,66,67,68);
     # foo eq "AB\0\0CD"
@@ -4194,20 +4200,29 @@ Examples:
         unpack("N", pack("B32", substr("0" x 32 . shift, -32)));
     }
 
+    # ...................................................................
+
     $foo = pack('sx2l', 12, 34);
     # short 12, two zero bytes padding, long 34
+
     $bar = pack('s@4l', 12, 34);
     # short 12, zero fill to position 4, long 34
     # $foo eq $bar
+
     $baz = pack('s.l', 12, 4, 34);
     # short 12, zero fill to position 4, long 34
 
+    # ...................................................................
+
     $foo = pack('nN', 42, 4711);
     # pack big-endian 16- and 32-bit unsigned integers
+
     $foo = pack('S>L>', 42, 4711);
     # exactly the same
+
     $foo = pack('s<l<', -42, 4711);
     # pack little-endian 16- and 32-bit signed integers
+
     $foo = pack('(sl)<', -42, 4711);
     # exactly the same
 
