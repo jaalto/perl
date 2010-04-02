@@ -1276,9 +1276,9 @@ interesting property that alternate subsequent invocations are identity maps
 rotations).  Hence the following is a rot13 encoder and decoder that will 
 work on ASCII and EBCDIC platforms:
 
-    #!/usr/local/bin/perl
+    #!/usr/bin/perl
 
-    while(<>){
+    while (<>) {
         tr/n-za-mN-ZA-M/a-zA-Z/;
         print;
     }
@@ -1286,7 +1286,6 @@ work on ASCII and EBCDIC platforms:
 In one-liner form:
 
     perl -ne 'tr/n-za-mN-ZA-M/a-zA-Z/;print'
-
 
 =head1 Hashing order and checksums
 
