@@ -2935,7 +2935,7 @@ translates a list of numbers to the corresponding characters.  And
 
 is just a funny way to write
 
-    %hash = ();
+    my %hash;
     foreach (@array) {
         $hash{get_a_key_for($_)} = $_;
     }
