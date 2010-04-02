@@ -5938,19 +5938,19 @@ each integer in turn, then joins the resulting strings with a separator (a
 dot C<.> by default). This can be useful for displaying ordinal values of
 characters in arbitrary strings:
 
-  printf "%vd", "AB\x{100}";           # prints "65.66.256"
-  printf "version is v%vd\n", $^V;     # Perl's version
+    printf "%vd", "AB\x{100}";           # prints "65.66.256"
+    printf "version is v%vd\n", $^V;     # Perl's version
 
 Put an asterisk C<*> before the C<v> to override the string to
 use to separate the numbers:
 
-  printf "address is %*vX\n", ":", $addr;   # IPv6 address
-  printf "bits are %0*v8b\n", " ", $bits;   # random bitstring
+    printf "address is %*vX\n", ":", $addr;   # IPv6 address
+    printf "bits are %0*v8b\n", " ", $bits;   # random bitstring
 
 You can also explicitly specify the argument number to use for
 the join string using something like C<*2$v>; for example:
 
-  printf '%*4$vX %*4$vX %*4$vX', @addr[1..3], ":";   # 3 IPv6 addresses
+    printf '%*4$vX %*4$vX %*4$vX', @addr[1..3], ":";   # 3 IPv6 addresses
 
 =item (minimum) width
 
@@ -5959,11 +5959,11 @@ display the given value. You can override the width by putting
 a number here, or get the width from the next argument (with C<*>)
 or from a specified argument (e.g., with C<*2$>):
 
-  printf '<%s>', "a";       # prints "<a>"
-  printf '<%6s>', "a";      # prints "<     a>"
-  printf '<%*s>', 6, "a";   # prints "<     a>"
-  printf '<%*2$s>', "a", 6; # prints "<     a>"
-  printf '<%2s>', "long";   # prints "<long>" (does not truncate)
+    printf '<%s>', "a";       # prints "<a>"
+    printf '<%6s>', "a";      # prints "<     a>"
+    printf '<%*s>', 6, "a";   # prints "<     a>"
+    printf '<%*2$s>', "a", 6; # prints "<     a>"
+    printf '<%2s>', "long";   # prints "<long>" (does not truncate)
 
 If a field width obtained through C<*> is negative, it has the same
 effect as the C<-> flag: left-justification.
@@ -5977,72 +5977,72 @@ For floating-point formats except 'g' and 'G', this specifies
 how many places right of the decimal point to show (the default being 6).
 For example:
 
-  # these examples are subject to system-specific variation
-  printf '<%f>', 1;    # prints "<1.000000>"
-  printf '<%.1f>', 1;  # prints "<1.0>"
-  printf '<%.0f>', 1;  # prints "<1>"
-  printf '<%e>', 10;   # prints "<1.000000e+01>"
-  printf '<%.1e>', 10; # prints "<1.0e+01>"
+    # these examples are subject to system-specific variation
+    printf '<%f>', 1;    # prints "<1.000000>"
+    printf '<%.1f>', 1;  # prints "<1.0>"
+    printf '<%.0f>', 1;  # prints "<1>"
+    printf '<%e>', 10;   # prints "<1.000000e+01>"
+    printf '<%.1e>', 10; # prints "<1.0e+01>"
 
 For "g" and "G", this specifies the maximum number of digits to show,
 including thoe prior to the decimal point and those after it; for 
 example:
 
-  # These examples are subject to system-specific variation.
-  printf '<%g>', 1;        # prints "<1>"
-  printf '<%.10g>', 1;     # prints "<1>"
-  printf '<%g>', 100;      # prints "<100>"
-  printf '<%.1g>', 100;    # prints "<1e+02>"
-  printf '<%.2g>', 100.01; # prints "<1e+02>"
-  printf '<%.5g>', 100.01; # prints "<100.01>"
-  printf '<%.4g>', 100.01; # prints "<100>"
+    # These examples are subject to system-specific variation.
+    printf '<%g>', 1;        # prints "<1>"
+    printf '<%.10g>', 1;     # prints "<1>"
+    printf '<%g>', 100;      # prints "<100>"
+    printf '<%.1g>', 100;    # prints "<1e+02>"
+    printf '<%.2g>', 100.01; # prints "<1e+02>"
+    printf '<%.5g>', 100.01; # prints "<100.01>"
+    printf '<%.4g>', 100.01; # prints "<100>"
 
 For integer conversions, specifying a precision implies that the
 output of the number itself should be zero-padded to this width,
 where the 0 flag is ignored:
 
-  printf '<%.6d>', 1;      # prints "<000001>"
-  printf '<%+.6d>', 1;     # prints "<+000001>"
-  printf '<%-10.6d>', 1;   # prints "<000001    >"
-  printf '<%10.6d>', 1;    # prints "<    000001>"
-  printf '<%010.6d>', 1;   # prints "<    000001>"
-  printf '<%+10.6d>', 1;   # prints "<   +000001>"
+    printf '<%.6d>', 1;      # prints "<000001>"
+    printf '<%+.6d>', 1;     # prints "<+000001>"
+    printf '<%-10.6d>', 1;   # prints "<000001    >"
+    printf '<%10.6d>', 1;    # prints "<    000001>"
+    printf '<%010.6d>', 1;   # prints "<    000001>"
+    printf '<%+10.6d>', 1;   # prints "<   +000001>"
 
-  printf '<%.6x>', 1;      # prints "<000001>"
-  printf '<%#.6x>', 1;     # prints "<0x000001>"
-  printf '<%-10.6x>', 1;   # prints "<000001    >"
-  printf '<%10.6x>', 1;    # prints "<    000001>"
-  printf '<%010.6x>', 1;   # prints "<    000001>"
-  printf '<%#10.6x>', 1;   # prints "<  0x000001>"
+    printf '<%.6x>', 1;      # prints "<000001>"
+    printf '<%#.6x>', 1;     # prints "<0x000001>"
+    printf '<%-10.6x>', 1;   # prints "<000001    >"
+    printf '<%10.6x>', 1;    # prints "<    000001>"
+    printf '<%010.6x>', 1;   # prints "<    000001>"
+    printf '<%#10.6x>', 1;   # prints "<  0x000001>"
 
 For string conversions, specifying a precision truncates the string
 to fit the specified width:
 
-  printf '<%.5s>', "truncated";   # prints "<trunc>"
-  printf '<%10.5s>', "truncated"; # prints "<     trunc>"
+    printf '<%.5s>', "truncated";   # prints "<trunc>"
+    printf '<%10.5s>', "truncated"; # prints "<     trunc>"
 
 You can also get the precision from the next argument using C<.*>:
 
-  printf '<%.6x>', 1;       # prints "<000001>"
-  printf '<%.*x>', 6, 1;    # prints "<000001>"
+    printf '<%.6x>', 1;       # prints "<000001>"
+    printf '<%.*x>', 6, 1;    # prints "<000001>"
 
 If a precision obtained through C<*> is negative, it counts
 as having no precision at all.
 
-  printf '<%.*s>',  7, "string";   # prints "<string>"
-  printf '<%.*s>',  3, "string";   # prints "<str>"
-  printf '<%.*s>',  0, "string";   # prints "<>"
-  printf '<%.*s>', -1, "string";   # prints "<string>"
+    printf '<%.*s>',  7, "string";   # prints "<string>"
+    printf '<%.*s>',  3, "string";   # prints "<str>"
+    printf '<%.*s>',  0, "string";   # prints "<>"
+    printf '<%.*s>', -1, "string";   # prints "<string>"
 
-  printf '<%.*d>',  1, 0;   # prints "<0>"
-  printf '<%.*d>',  0, 0;   # prints "<>"
-  printf '<%.*d>', -1, 0;   # prints "<0>"
+    printf '<%.*d>',  1, 0;   # prints "<0>"
+    printf '<%.*d>',  0, 0;   # prints "<>"
+    printf '<%.*d>', -1, 0;   # prints "<0>"
 
 You cannot currently get the precision from a specified number,
 but it is intended that this will be possible in the future, for
 example using C<.*2$>:
 
-  printf "<%.*2$x>", 1, 6;   # INVALID, but in future will print "<000001>"
+    printf "<%.*2$x>", 1, 6;   # INVALID, but in future will print "<000001>"
 
 =item size
 
@@ -6053,10 +6053,10 @@ whatever the default integer size is on your platform (usually 32 or 64
 bits), but you can override this to use instead one of the standard C types,
 as supported by the compiler used to build Perl:
 
-   l           interpret integer as C type "long" or "unsigned long"
-   h           interpret integer as C type "short" or "unsigned short"
-   q, L or ll  interpret integer as C type "long long", "unsigned long long".
-               or "quads" (typically 64-bit integers)
+    l           interpret integer as C type "long" or "unsigned long"
+    h           interpret integer as C type "short" or "unsigned short"
+    q, L or ll  interpret integer as C type "long long", "unsigned long long".
+		or "quads" (typically 64-bit integers)
 
 The last will raise an exception if Perl does not understand "quads" in your
 installation. (This requires either that the platform natively support quads,
