@@ -7624,7 +7624,7 @@ The status is returned in C<$?> and C<${^CHILD_ERROR_NATIVE}>.  If you say
     use POSIX ":sys_wait_h";
     #...
     do {
-        $kid = waitpid(-1, WNOHANG);
+        $kid = waitpid -1, WNOHANG;
     } while $kid > 0;
 
 then you can do a non-blocking wait for all pending zombie processes.
