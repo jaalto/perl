@@ -4847,6 +4847,7 @@ the subroutine.
 In other words, you can write:
 
     push @INC, \&my_sub;
+
     sub my_sub {
         my ($coderef, $filename) = @_;  # $coderef is \&my_sub
         ...
@@ -4855,6 +4856,7 @@ In other words, you can write:
 or:
 
     push @INC, [ \&my_sub, $x, $y, ... ];
+
     sub my_sub {
         my ($arrayref, $filename) = @_;
         # Retrieve $x, $y, ...
@@ -4870,6 +4872,7 @@ into package C<main>.)  Here is a typical code layout:
     # In Foo.pm
     package Foo;
     sub new { ... }
+
     sub Foo::INC {
         my ($self, $filename) = @_;
         ...
