@@ -810,8 +810,8 @@ It is I<NOT>:
 The C<< => >> operator is helpful in documenting the correspondence
 between keys and values in hashes, and other paired elements in lists.
 
-	%hash = ( $key => $value );
-	login( $username => $password );
+    my %hash = ( $key => $value );
+    login( $username => $password );
 
 =head2 Yada Yada Operator
 X<...> X<... operator> X<yada yada operator>
@@ -820,42 +820,42 @@ The yada yada operator (noted C<...>) is a placeholder for code. Perl
 parses it without error, but when you try to execute a yada yada, it
 throws an exception with the text C<Unimplemented>:
 
-	sub unimplemented { ... }
+    sub unimplemented { ... }
 
-	eval { unimplemented() };
-	if( $@ eq 'Unimplemented' ) {
-	  print "I found the yada yada!\n";
-	  }
+    eval { unimplemented() };
+
+    if ( $@ eq 'Unimplemented' ) {
+	print "I found the yada yada!\n";
+    }
 
 You can only use the yada yada to stand in for a complete statement.
 These examples of the yada yada work:
 
-	{ ... }
+    { ... }
 
-	sub foo { ... }
+    sub foo { ... }
 
-	...;
+    ...;
 
-	eval { ... };
+    eval { ... };
 
-	sub foo {
-			my( $self ) = shift;
+    sub foo {
+        my ($self) = shift;
+        ...;
+    }
 
-			...;
-			}
-
-	do { my $n; ...; print 'Hurrah!' };
+    do { my $n; ...; print 'Hurrah!' };
 
 The yada yada cannot stand in for an expression that is part of a
 larger statement since the C<...> is also the three-dot version of the
 range operator (see L<Range Operators>). These examples of the yada
 yada are still syntax errors:
 
-	print ...;
+    print ...;
 
-	open my($fh), '>', '/dev/passwd' or ...;
+    open my($fh), '>', '/dev/passwd' or ...;
 
-	if( $condition && ... ) { print "Hello\n" };
+    if ( $condition and ... ) { print "Hello\n" };
 
 There are some cases where Perl can't immediately tell the difference
 between an expression and a statement. For instance, the syntax for a
@@ -865,14 +865,14 @@ is a syntax error if Perl doesn't guess that the C<{ ... }> is a
 block. In that case, it doesn't think the C<...> is the yada yada
 because it's expecting an expression instead of a statement:
 
-	my @transformed = map { ... } @input;  # syntax error
+    my @transformed = map { ... } @input;  # syntax error
 
 You can use a C<;> inside your block to denote that the C<{ ... }> is
 a block and not a hash reference constructor. Now the yada yada works:
 
-	my @transformed = map {; ... } @input; # ; disambiguates
+    my @transformed = map {; ... } @input; # ; disambiguates
 
-	my @transformed = map { ...; } @input; # ; disambiguates
+    my @transformed = map { ...; } @input; # ; disambiguates
 
 =head2 List Operators (Rightward)
 X<operator, list, rightward> X<list operator>
