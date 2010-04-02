@@ -4380,7 +4380,7 @@ Treats ARRAY as a stack, and pushes the values of LIST
 onto the end of ARRAY.  The length of ARRAY increases by the length of
 LIST.  Has the same effect as
 
-    for $value (LIST) {
+    for my $value (LIST) {
         $ARRAY[++$#ARRAY] = $value;
     }
 
