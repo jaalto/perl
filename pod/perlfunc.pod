@@ -4493,7 +4493,7 @@ C<ARGV> filehandle. In that case, you have to open each element of
 C<@ARGV> yourself since C<eof> handles C<ARGV> differently.
 
     foreach my $arg (@ARGV) {
-        open(my $fh, $arg) or warn "Can't open $arg: $!";
+        open my $fh, "<", $arg  or warn "Can't open $arg: $!";
 
         while ( ! eof($fh) ) {
             defined( $_ = <$fh> )
