@@ -5673,15 +5673,19 @@ The following equivalences hold (assuming C<< $[ == 0 and $#a >= $i >> )
 Example, assuming array lengths are passed before arrays:
 
     sub aeq {  # compare two list values
-        my(@a) = splice(@_,0,shift);
-        my(@b) = splice(@_,0,shift);
+        my(@a) = splice(@_, 0, shift);
+        my(@b) = splice(@_, 0, shift);
+
         return 0 unless @a == @b;  # same len?
+
         while (@a) {
             return 0 if pop(@a) ne pop(@b);
         }
+
         return 1;
     }
-    if (&aeq($len,@foo[1..$len],0+@bar,@bar)) { ... }
+
+    if ( &aeq($len, @foo[1..$len], 0+@bar, @bar) ) { ... }
 
 =item split /PATTERN/,EXPR,LIMIT
 X<split>
