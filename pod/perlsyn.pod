@@ -580,11 +580,11 @@ successful C<when> or an explicit C<break>.
 
 Most of the power comes from implicit smart matching:
 
-	when($foo)
+	when ($foo) { ...
 
 is exactly equivalent to
 
-	when($_ ~~ $foo)
+	when ($_ ~~ $foo) { ...
 
 Most of the time, C<when(EXPR)> is treated as an implicit smart match of
 C<$_>, i.e. C<$_ ~~ EXPR>. (See L</"Smart matching in detail"> for more
