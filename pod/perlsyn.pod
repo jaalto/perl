@@ -487,11 +487,11 @@ Whereas here's how a Perl programmer more comfortable with the idiom might
 do it:
 
     OUTER: for my $wid (@ary1) {
-    INNER:   for my $jet (@ary2) {
-		next OUTER if $wid > $jet;
-		$wid += $jet;
-	     }
-	  }
+    INNER:     for my $jet (@ary2) {
+		   next OUTER if $wid > $jet;
+		   $wid += $jet;
+	       }
+	   }
 
 See how much easier this is?  It's cleaner, safer, and faster.  It's
 cleaner because it's less noisy.  It's safer because if code gets added
