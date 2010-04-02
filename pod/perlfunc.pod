@@ -1536,6 +1536,7 @@ last file.  Examples:
         if (eof()) {  # check for end of last file
             print "--------------\n";
         }
+
         print;
         last if eof();          # needed if we're reading from a terminal
     }
