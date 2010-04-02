@@ -252,7 +252,7 @@ work with a pod2_other_format translation) through:
 
 =back
 
-    perl -ne 'if(/(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/)' \
+    perl -ne 'if (/(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/)' \
      -e '{printf("%s%-9o%-9o%-9o%o\n",$1,$2,$3,$4,$5)}' perlebcdic.pod
 
 If you want to retain the UTF-x code points then in script form you
