@@ -2306,6 +2306,7 @@ you can write this:
 
     use Socket;
     $packed_ip = gethostbyname("www.perl.org");
+
     if (defined $packed_ip) {
         $ip_address = inet_ntoa($packed_ip);
     }
