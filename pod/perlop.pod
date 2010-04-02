@@ -1260,20 +1260,25 @@ failure.
 
 Examples:
 
-    open(TTY, '/dev/tty');
-    <TTY> =~ /^y/i && foo();    # do foo if desired
+    open my $TTY, "<", '/dev/tty';
+    <$TTY> =~ /^y/i && foo();    # do foo if desired
 
-    if (/Version: *([0-9.]*)/) { $version = $1; }
+    if ( /Version: *([0-9.]*)/ ) {
+	$version = $1;
+    }
 
     next if m#^/usr/spool/uucp#;
 
     # poor man's grep
     $arg = shift;
+
     while (<>) {
 	print if /$arg/o;       # compile only once
     }
 
-    if (($F1, $F2, $Etc) = ($foo =~ /^(\S+)\s+(\S+)\s*(.*)/))
+    if ( ($F1, $F2, $Etc) = ($foo =~ /^(\S+)\s+(\S+)\s*(.*)/) ) {
+	...
+    }
 
 This last example splits $foo into the first two words and the
 remainder of the line, and assigns those three fields to $F1, $F2, and
