@@ -739,7 +739,7 @@ files.  On systems that don't support fchmod(2), passing filehandles raises
 an exception.  Filehandles must be passed as globs or glob references to be
 recognized; barewords are considered filenames.
 
-    open(my $fh, "<", "foo");
+    open my $fh, "<", "foo"  or  die "Opening 'foo' failed: $!";
     my $perm = (stat $fh)[2] & 07777;
     chmod($perm | 0600, $fh);
 
