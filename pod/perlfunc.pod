@@ -2827,7 +2827,7 @@ to do that, would you?
 
 To get the last two digits of the year (e.g., '01' in 2001) do:
 
-    $year = sprintf("%02d", $year % 100);
+    $year = sprintf "%02d", $year % 100;
 
 C<$wday> is the day of the week, with 0 indicating Sunday and 3 indicating
 Wednesday.  C<$yday> is the day of the year, in the range C<0..364>
