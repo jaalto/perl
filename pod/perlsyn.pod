@@ -671,7 +671,7 @@ a C<break>.
 You can use the C<continue> keyword to fall through from one
 case to the next:
 
-    given($foo) {
+    given ($foo) {
 	when (/x/) { say '$foo contains an x'; continue }
 	when (/y/) { say '$foo contains a y' }
 	default    { say '$foo does not contain a y' }
