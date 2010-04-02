@@ -5133,18 +5133,21 @@ If you want to select on many filehandles, you may wish to write a
 subroutine like this:
 
     sub fhbits {
-        my(@fhlist) = split(' ',$_[0]);
+        my(@fhlist) = split(' ', $_[0]);
         my($bits);
+
         for (@fhlist) {
-            vec($bits,fileno($_),1) = 1;
+            vec($bits, fileno($_), 1) = 1;
         }
+
         $bits;
     }
+
     $rin = fhbits('STDIN TTY SOCK');
 
 The usual idiom is:
 
-    ($nfound,$timeleft) =
+    ($nfound, $timeleft) =
       select($rout=$rin, $wout=$win, $eout=$ein, $timeout);
 
 or to block until something becomes ready just do this
