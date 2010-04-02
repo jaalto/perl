@@ -835,6 +835,7 @@ Here's an example that looks up nonnumeric uids in the passwd file:
 
     print "User: ";
     chomp($user = <STDIN>);
+
     print "Files: ";
     chomp($pattern = <STDIN>);
 
