@@ -258,7 +258,7 @@ into the middle of this allocated storage.
 
 This is best demonstrated by example:
 
-  % ./perl -Ilib -MDevel::Peek -le '$a="12345"; $a=~s/.//; Dump($a)'
+  $ ./perl -Ilib -MDevel::Peek -le '$a="12345"; $a=~s/.//; Dump($a)'
   SV = PVIV(0x8128450) at 0x81340f0
     REFCNT = 1
     FLAGS = (POK,OOK,pPOK)
@@ -2396,13 +2396,13 @@ have to code it themselves when supporting multiple versions of Perl.
 C<Devel::PPPort> generates a C header file F<ppport.h> that can also
 be run as a Perl script. To generate F<ppport.h>, run:
 
-    perl -MDevel::PPPort -eDevel::PPPort::WriteFile
+    $ perl -MDevel::PPPort -eDevel::PPPort::WriteFile
 
 Besides checking existing XS code, the script can also be used to retrieve
 compatibility information for various API calls using the C<--api-info>
 command line switch. For example:
 
-  % perl ppport.h --api-info=sv_magicext
+    $ perl ppport.h --api-info=sv_magicext
 
 For details, see C<perldoc ppport.h>.
 
