@@ -7108,7 +7108,7 @@ The TEMPLATE has the same format as in the C<pack> function.
 Here's a subroutine that does substring:
 
     sub substr {
-        my($what,$where,$howmuch) = @_;
+        my ($what, $where, $howmuch) = @_;
         unpack("x$where a$howmuch", $what);
     }
 
