@@ -2893,7 +2893,7 @@ divided by the natural log of N.  For example:
 
     sub log10 {
         my $n = shift;
-        return log($n)/log(10);
+        return log($n) / log(10);
     }
 
 See also L</exp> for the inverse operation.
