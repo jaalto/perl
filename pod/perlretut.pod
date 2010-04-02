@@ -203,7 +203,7 @@ So far, so good.  With the knowledge above you can already perform
 searches with just about any literal string regexp you can dream up.
 Here is a I<very simple> emulation of the Unix grep program:
 
-    % cat > simple_grep
+    $ cat > simple_grep
     #!/usr/bin/perl
     $regexp = shift;
     while (<>) {
@@ -211,9 +211,9 @@ Here is a I<very simple> emulation of the Unix grep program:
     }
     ^D
 
-    % chmod +x simple_grep
+    $ chmod +x simple_grep
 
-    % simple_grep abba /usr/dict/words
+    $ simple_grep abba /usr/dict/words
     Babbage
     cabbage
     cabbages
@@ -746,7 +746,7 @@ is used for both parts.
 
 A similar task is to find words consisting of two identical parts:
 
-    % simple_grep '^(\w\w\w\w|\w\w\w|\w\w|\w)\1$' /usr/dict/words
+    $ simple_grep '^(\w\w\w\w|\w\w\w|\w\w|\w)\1$' /usr/dict/words
     beriberi
     booboo
     coco
@@ -984,7 +984,7 @@ Here are some examples:
     $year =~ /\d{2}(\d{2})?/;  # same thing written differently. However,
                                # this produces $1 and the other does not.
 
-    % simple_grep '^(\w+)\1$' /usr/dict/words   # isn't this easier?
+    $ simple_grep '^(\w+)\1$' /usr/dict/words   # isn't this easier?
     beriberi
     booboo
     coco
@@ -1697,7 +1697,7 @@ will search and replace all occurrences of the regexp in the string:
 If you prefer 'regex' over 'regexp' in this tutorial, you could use
 the following program to replace it:
 
-    % cat > simple_replace
+    $ cat > simple_replace
     #!/usr/bin/perl
     $regexp = shift;
     $replacement = shift;
@@ -1707,7 +1707,7 @@ the following program to replace it:
     }
     ^D
 
-    % simple_replace regexp regex perlretut.pod
+    $ simple_replace regexp regex perlretut.pod
 
 In C<simple_replace> we used the C<s///g> modifier to replace all
 occurrences of the regexp on each line and the C<s///o> modifier to
@@ -2027,7 +2027,7 @@ pre-compiled regexps, we write a C<grep_step> program which greps
 for a sequence of patterns, advancing to the next pattern as soon
 as one has been satisfied.
 
-    % cat > grep_step
+    $ cat > grep_step
     #!/usr/bin/perl
     # grep_step - match <number> regexps, one after the other
     # usage: multi_grep <number> regexp1 regexp2 ... file1 file2 ...
@@ -2044,7 +2044,7 @@ as one has been satisfied.
     }
     ^D
 
-    % grep_step 3 shift print last grep_step
+    $ grep_step 3 shift print last grep_step
     $number = shift;
             print $line;
             last unless @compiled;
@@ -2064,7 +2064,7 @@ can be done by programming a join operation.  We'll exploit this idea in
 an improved version of the C<simple_grep> program: a program that matches
 multiple patterns:
 
-    % cat > multi_grep
+    $ cat > multi_grep
     #!/usr/bin/perl
     # multi_grep - match any of <number> regexps
     # usage: multi_grep <number> regexp1 regexp2 ... file1 file2 ...
@@ -2078,7 +2078,7 @@ multiple patterns:
     }
     ^D
 
-    % multi_grep 2 shift for multi_grep
+    $ multi_grep 2 shift for multi_grep
     $number = shift;
     $regexp[$_] = shift foreach (0..$number-1);
 
@@ -2091,7 +2091,7 @@ with the additional twist that commands may be abbreviated as long as
 the given string is unique. The program below demonstrates the basic
 algorithm.
 
-    % cat > keymatch
+    $ cat > keymatch
     #!/usr/bin/perl
     $kwds = 'copy compare list print';
     while( $command = <> ){
@@ -2106,7 +2106,7 @@ algorithm.
     }
     ^D
 
-    % keymatch
+    $ keymatch
     li
     command: 'list'
     co
@@ -2360,7 +2360,7 @@ The integer or name form of the C<condition> allows us to choose,
 with more flexibility, what to match based on what matched earlier in the
 regexp. This searches for words of the form C<"$x$x"> or C<"$x$y$y$x">:
 
-    % simple_grep '^(\w+)(\w+)?(?(2)\2\1|\1)$' /usr/dict/words
+    $ simple_grep '^(\w+)(\w+)?(?(2)\2\1|\1)$' /usr/dict/words
     beriberi
     coco
     couscous
@@ -2742,7 +2742,7 @@ execution.  C<debugcolor> is the same as debug, except the debugging
 information is displayed in color on terminals that can display
 termcap color sequences.  Here is example output:
 
-    % perl -e 'use re "debug"; "abc" =~ /a*b+c/;'
+    $ perl -e 'use re "debug"; "abc" =~ /a*b+c/;'
     Compiling REx `a*b+c'
     size 9 first at 1
        1: STAR(4)
