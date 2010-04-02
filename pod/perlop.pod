@@ -1315,27 +1315,33 @@ properly supported when anchored at the very beginning of the pattern.
 Examples:
 
     # list context
-    ($one,$five,$fifteen) = (`uptime` =~ /(\d+\.\d+)/g);
+    ($one, $five, $fifteen) = (`uptime` =~ /(\d+\.\d+)/g);
 
     # scalar context
     $/ = "";
-    while (defined($paragraph = <>)) {
+
+    while ( defined($paragraph = <>) ) {
 	while ($paragraph =~ /[a-z]['")]*[.!?]+['")]*\s/g) {
 	    $sentences++;
 	}
     }
+
     print "$sentences\n";
 
     # using m//gc with \G
     $_ = "ppooqppqq";
+
     while ($i++ < 2) {
 	print "1: '";
 	print $1 while /(o)/gc; print "', pos=", pos, "\n";
+
 	print "2: '";
 	print $1 if /\G(q)/gc;  print "', pos=", pos, "\n";
+
 	print "3: '";
 	print $1 while /(p)/gc; print "', pos=", pos, "\n";
     }
+
     print "Final: '$1', pos=",pos,"\n" if /\G(.)/;
 
 The last example should print:
