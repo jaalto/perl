@@ -126,27 +126,35 @@ signal handlers like this:
 
     sub REAPER {
 	$waitedpid = wait;
+
 	# loathe SysV: it makes us not only reinstate
 	# the handler, but place it after the wait
+
 	$SIG{CHLD} = \&REAPER;
     }
+
     $SIG{CHLD} = \&REAPER;
     # now do something that forks...
 
 or better still:
 
     use POSIX ":sys_wait_h";
+
     sub REAPER {
 	my $child;
+
 	# If a second child dies while in the signal handler caused by the
 	# first death, we won't get another signal. So must loop here else
 	# we will leave the unreaped child as a zombie. And the next time
 	# two children die we get another zombie. And so on.
-        while (($child = waitpid(-1,WNOHANG)) > 0) {
+
+        while (($child = waitpid(-1, WNOHANG)) > 0) {
 	    $Kid_Status{$child} = $?;
 	}
+
 	$SIG{CHLD} = \&REAPER;  # still loathe SysV
     }
+
     $SIG{CHLD} = \&REAPER;
     # do something that forks...
 
@@ -166,6 +174,7 @@ Here's an example:
         flock(FH, 2);   # blocking write lock
         alarm 0;
     };
+
     if ($@ and $@ !~ /alarm clock restart/) { die }
 
 If the operation being timed out is system() or qx(), this technique
