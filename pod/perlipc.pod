@@ -231,6 +231,7 @@ info to show that it works and should be replaced with the real code.
       print "PID: $$\n";
       print "ARGV: @ARGV\n";
       my $c = 0;
+
       while (++$c) {
           sleep 2;
           print "$c\n";
