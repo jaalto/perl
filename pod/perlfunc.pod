@@ -2628,13 +2628,14 @@ Here is yet another way to print your environment:
 
     @keys = keys %ENV;
     @values = values %ENV;
+
     while (@keys) {
         print pop(@keys), '=', pop(@values), "\n";
     }
 
 or how about sorted by key:
 
-    foreach $key (sort(keys %ENV)) {
+    for my $key (sort keys %ENV) {
         print $key, '=', $ENV{$key}, "\n";
     }
 
@@ -2644,7 +2645,7 @@ modifying them will not affect the original hash.  Compare L</values>.
 To sort a hash by value, you'll need to use a C<sort> function.
 Here's a descending numeric sort of a hash by its values:
 
-    foreach $key (sort { $hash{$b} <=> $hash{$a} } keys %hash) {
+    for my $key (sort { $hash{$b} <=> $hash{$a} } keys %hash) {
         printf "%4d %s\n", $hash{$key}, $key;
     }
 
