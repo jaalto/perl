@@ -316,6 +316,7 @@ want to skip ahead and get the next record.
 
     while (<>) {
 	chomp;
+
 	if (s/\\$//) {
 	    $_ .= <>;
 	    redo unless eof();
@@ -327,6 +328,7 @@ which is Perl short-hand for the more explicitly written version:
 
     LINE: while (defined($line = <ARGV>)) {
 	chomp($line);
+
 	if ($line =~ s/\\$//) {
 	    $line .= <ARGV>;
 	    redo LINE unless eof(); # not eof(ARGV)!
