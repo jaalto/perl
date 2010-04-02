@@ -655,8 +655,6 @@ deep breath...
 	 PERL_SYS_TERM();
     }
 
-
-
 Compile and run:
 
     $ cc -o power power.c `perl -MExtUtils::Embed -e ccopts -e ldopts`
