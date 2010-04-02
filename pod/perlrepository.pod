@@ -39,7 +39,7 @@ A mirror of the repository is found at:
 You will need a copy of Git for your computer. You can fetch a copy of
 the repository using the Git protocol (which uses port 9418):
 
-  % git clone git://perl5.git.perl.org/perl.git perl-git
+  $ git clone git://perl5.git.perl.org/perl.git perl-git
 
 This clones the repository and makes a local copy in the F<perl-git>
 directory.
@@ -47,7 +47,7 @@ directory.
 If your local network does not allow you to use port 9418, then you can
 fetch a copy of the repository over HTTP (this is at least 4x slower):
 
-  % git clone http://perl5.git.perl.org/perl.git perl-http
+  $ git clone http://perl5.git.perl.org/perl.git perl-http
 
 This clones the repository and makes a local copy in the F<perl-http>
 directory.
@@ -57,7 +57,7 @@ directory.
 If you are a committer, then you can fetch a copy of the repository
 that you can push back on with:
 
-  % git clone ssh://perl5.git.perl.org/perl.git perl-ssh
+  $ git clone ssh://perl5.git.perl.org/perl.git perl-ssh
 
 This clones the repository and makes a local copy in the F<perl-ssh>
 directory.
@@ -67,30 +67,30 @@ you will need to modify the URL for the origin remote to enable
 pushing. To do that edit F<.git/config> with L<git-config(1)> like
 this:
 
-  % git config remote.origin.url ssh://perl5.git.perl.org/perl.git
+  $ git config remote.origin.url ssh://perl5.git.perl.org/perl.git
 
 You can also set up your user name and e-mail address. Most people do
 this once globally in their F<~/.gitconfig> by doing something like:
 
-  % git config --global user.name "Ævar Arnfjörð Bjarmason"
-  % git config --global user.email avarab@gmail.com
+  $ git config --global user.name "Ævar Arnfjörð Bjarmason"
+  $ git config --global user.email avarab@gmail.com
 
 However if you'd like to override that just for perl then execute then
 execute something like the following in F<perl-git>:
 
-  % git config user.email avar@cpan.org
+  $ git config user.email avar@cpan.org
 
 It is also possible to keep C<origin> as a git remote, and add a new
 remote for ssh access:
 
-  % git remote add camel perl5.git.perl.org:/perl.git
+  $ git remote add camel perl5.git.perl.org:/perl.git
 
 This allows you to update your local repository by pulling from
 C<origin>, which is faster and doesn't require you to authenticate, and
 to push your changes back with the C<camel> remote:
 
-  % git fetch camel
-  % git push camel
+  $ git fetch camel
+  $ git push camel
 
 The C<fetch> command just updates the C<camel> refs, as the objects
 themselves should have been fetched when pulling from C<origin>.
@@ -126,13 +126,13 @@ it.
 After a clone the repository will contain a single local branch, which
 will be the current branch as well, as indicated by the asterisk.
 
-  % git branch
+  $ git branch
   * blead
 
 Using the -a switch to C<branch> will also show the remote tracking
 branches in the repository:
 
-  % git branch -a
+  $ git branch -a
   * blead
     origin/HEAD
     origin/blead
@@ -149,28 +149,28 @@ remote tracking branch C<origin/blead>.
 
 You can see recent commits:
 
-  % git log
+  $ git log
 
 And pull new changes from the repository, and update your local
 repository (must be clean first)
 
-  % git pull
+  $ git pull
 
 Assuming we are on the branch C<blead> immediately after a pull, this
 command would be more or less equivalent to:
 
-  % git fetch
-  % git merge origin/blead
+  $ git fetch
+  $ git merge origin/blead
 
 In fact if you want to update your local repository without touching
 your working directory you do:
 
-  % git fetch
+  $ git fetch
 
 And if you want to update your remote-tracking branches for all defined
 remotes simultaneously you can do
 
-  % git remote update
+  $ git remote update
 
 Neither of these last two commands will update your working directory,
 however both will update the remote-tracking branches in your
@@ -178,21 +178,21 @@ repository.
 
 To switch to another branch:
 
-  % git checkout origin/maint-5.8-dor
+  $ git checkout origin/maint-5.8-dor
 
 To make a local branch of a remote branch:
 
-  % git checkout -b maint-5.10 origin/maint-5.10
+  $ git checkout -b maint-5.10 origin/maint-5.10
 
 To switch back to blead:
 
-  % git checkout blead
+  $ git checkout blead
 
 =head2 FINDING OUT YOUR STATUS
 
 The most common git command you will use will probably be
 
-  % git status
+  $ git status
 
 This command will produce as output a description of the current state
 of the repository, including modified files and unignored untracked
@@ -231,7 +231,7 @@ C<git commit>.
 Assuming that you'd like to commit all the changes you've just made as a
 a single atomic unit, run this command:
 
-   % git commit -a
+   $ git commit -a
 
 (That C<-a> tells git to add every file you've changed to this commit.
 New files aren't automatically added to your commit when you use C<commit
@@ -251,7 +251,7 @@ git will write your change to disk and tell you something like this:
 
 If you re-run C<git status>, you should see something like this:
 
-  % git status
+  $ git status
   # On branch blead
   # Your branch is ahead of 'origin/blead' by 2 commits.
   #
@@ -271,17 +271,17 @@ output.
 If you have a patch in mind for Perl, you should first get a copy of
 the repository:
 
-  % git clone git://perl5.git.perl.org/perl.git perl-git
+  $ git clone git://perl5.git.perl.org/perl.git perl-git
 
 Then change into the directory:
 
-  % cd perl-git
+  $ cd perl-git
 
 Alternatively, if you already have a Perl repository, you should ensure
 that you're on the I<blead> branch, and your repository is up to date:
 
-  % git checkout blead
-  % git pull
+  $ git checkout blead
+  $ git pull
 
 It's preferable to patch against the latest blead version, since this
 is where new development occurs for all changes other than critical bug
@@ -292,12 +292,12 @@ branches where the fix should be applied.
 Now that we have everything up to date, we need to create a temporary
 new branch for these changes and switch into it:
 
-  % git checkout -b orange
+  $ git checkout -b orange
 
 which is the short form of
 
-  % git branch orange
-  % git checkout orange
+  $ git branch orange
+  $ git checkout orange
 
 Creating a topic branch makes it easier for the maintainers to rebase
 or merge back into the master blead for a more linear history. If you
@@ -310,11 +310,11 @@ Awesome.
 Then make your changes. For example, if Leon Brocard changes his name
 to Orange Brocard, we should change his name in the AUTHORS file:
 
-  % perl -pi -e 's{Leon Brocard}{Orange Brocard}' AUTHORS
+  $ perl -pi -e 's{Leon Brocard}{Orange Brocard}' AUTHORS
 
 You can see what files are changed:
 
-  % git status
+  $ git status
   # On branch orange
   # Changes to be committed:
   #   (use "git reset HEAD <file>..." to unstage)
@@ -324,7 +324,7 @@ You can see what files are changed:
 
 And you can see the changes:
 
-  % git diff
+  $ git diff
   diff --git a/AUTHORS b/AUTHORS
   index 293dd70..722c93e 100644
   --- a/AUTHORS
@@ -341,22 +341,22 @@ And you can see the changes:
 
 Now commit your change locally:
 
-  % git commit -a -m 'Rename Leon Brocard to Orange Brocard'
+  $ git commit -a -m 'Rename Leon Brocard to Orange Brocard'
   Created commit 6196c1d: Rename Leon Brocard to Orange Brocard
    1 files changed, 1 insertions(+), 1 deletions(-)
 
 You can examine your last commit with:
 
-  % git show HEAD
+  $ git show HEAD
 
 and if you are not happy with either the description or the patch
 itself you can fix it up by editing the files once more and then issue:
 
-  % git commit -a --amend
+  $ git commit -a --amend
 
 Now you should create a patch file for all your local changes:
 
-  % git format-patch origin
+  $ git format-patch origin
   0001-Rename-Leon-Brocard-to-Orange-Brocard.patch
 
 You should now send an email to perl5-porters@perl.org with a
@@ -366,11 +366,11 @@ send these emails for you.)
 
 If you want to delete your temporary branch, you may do so with:
 
-  % git checkout blead
-  % git branch -d orange
+  $ git checkout blead
+  $ git branch -d orange
   error: The branch 'orange' is not an ancestor of your current HEAD.
   If you are sure you want to delete it, run 'git branch -D orange'.
-  % git branch -D orange
+  $ git branch -D orange
   Deleted branch orange.
 
 =head2 Using git to send patch emails
@@ -557,23 +557,23 @@ you should try out the patch.
 First we need to create a temporary new branch for these changes and
 switch into it:
 
-  % git checkout -b experimental
+  $ git checkout -b experimental
 
 Patches that were formatted by C<git format-patch> are applied with
 C<git am>:
 
-  % git am 0001-Rename-Leon-Brocard-to-Orange-Brocard.patch
+  $ git am 0001-Rename-Leon-Brocard-to-Orange-Brocard.patch
   Applying Rename Leon Brocard to Orange Brocard
 
 If just a raw diff is provided, it is also possible use this two-step
 process:
 
-  % git apply bugfix.diff
-  % git commit -a -m "Some fixing" --author="That Guy <that.guy@internets.com>"
+  $ git apply bugfix.diff
+  $ git commit -a -m "Some fixing" --author="That Guy <that.guy@internets.com>"
 
 Now we can inspect the change:
 
-  % git show HEAD
+  $ git show HEAD
   commit b1b3dab48344cff6de4087efca3dbd63548ab5e2
   Author: Leon Brocard <acme@astray.com>
   Date:   Fri Dec 19 17:02:59 2008 +0000
@@ -597,17 +597,17 @@ Now we can inspect the change:
 If you are a committer to Perl and you think the patch is good, you can
 then merge it into blead then push it out to the main repository:
 
-  % git checkout blead
-  % git merge experimental
-  % git push
+  $ git checkout blead
+  $ git merge experimental
+  $ git push
 
 If you want to delete your temporary branch, you may do so with:
 
-  % git checkout blead
-  % git branch -d experimental
+  $ git checkout blead
+  $ git branch -d experimental
   error: The branch 'experimental' is not an ancestor of your current HEAD.
   If you are sure you want to delete it, run 'git branch -D experimental'.
-  % git branch -D experimental
+  $ git branch -D experimental
   Deleted branch experimental.
 
 =head1 CLEANING A WORKING DIRECTORY
@@ -617,11 +617,11 @@ replacement for C<make clean>.
 
 To reset your working directory to a pristine condition you can do:
 
-  % git clean -dxf
+  $ git clean -dxf
 
 However, be aware this will delete ALL untracked content. You can use
 
-  % git clean -Xf
+  $ git clean -Xf
 
 to remove all ignored untracked files, such as build and test
 byproduct, but leave any  manually created files alone.
@@ -642,7 +642,7 @@ when some behaviour is correct, and with C<1> when it's faulty. You need
 an helper script that automates building C<perl> and running the
 testcase:
 
-  % cat ~/run
+  $ cat ~/run
   #!/bin/sh
   git clean -dxf
   # If you can use ccache, add -Dcc=ccache\ gcc -Dld=gcc to the Configure line
@@ -667,19 +667,19 @@ F<~/testcase.pl>.
 
 You first enter in bisect mode with:
 
-  % git bisect start
+  $ git bisect start
 
 For example, if the bug is present on C<HEAD> but wasn't in 5.10.0,
 C<git> will learn about this when you enter:
 
-  % git bisect bad
-  % git bisect good perl-5.10.0
+  $ git bisect bad
+  $ git bisect good perl-5.10.0
   Bisecting: 853 revisions left to test after this
 
 This results in checking out the median commit between C<HEAD> and
 C<perl-5.10.0>. You can then run the bisecting process with:
 
-  % git bisect run ~/run
+  $ git bisect run ~/run
 
 When the first bad commit is isolated, C<git bisect> will tell you so:
 
@@ -720,17 +720,17 @@ Visit the page and click the "fork" button. This clones the Perl git
 repository for you and provides you with "Your Clone URL" from which
 you should clone:
 
-  % git clone git@github.com:USERNAME/perl.git perl-github
+  $ git clone git@github.com:USERNAME/perl.git perl-github
 
 The same patch as above, using github might look like this:
 
-  % cd perl-github
-  % git remote add upstream git://perl5.git.perl.org/perl.git
-  % git pull upstream blead
-  % git checkout -b orange
-  % perl -pi -e 's{Leon Brocard}{Orange Brocard}' AUTHORS
-  % git commit -a -m 'Rename Leon Brocard to Orange Brocard'
-  % git push origin orange
+  $ cd perl-github
+  $ git remote add upstream git://perl5.git.perl.org/perl.git
+  $ git pull upstream blead
+  $ git checkout -b orange
+  $ perl -pi -e 's{Leon Brocard}{Orange Brocard}' AUTHORS
+  $ git commit -a -m 'Rename Leon Brocard to Orange Brocard'
+  $ git push origin orange
 
 The orange branch has been pushed to GitHub, so you should now send an
 email to perl5-porters@perl.org with a description of your changes and
@@ -744,28 +744,28 @@ the following information:
 If someone has provided a branch via GitHub and you are a committer,
 you should use the following in your perl-ssh directory:
 
-  % git remote add dandv git://github.com/dandv/perl.git
-  % git fetch dandv
+  $ git remote add dandv git://github.com/dandv/perl.git
+  $ git fetch dandv
 
 Now you can see the differences between the branch and blead:
 
-  % git diff dandv/blead
+  $ git diff dandv/blead
 
 And you can see the commits:
 
-  % git log dandv/blead
+  $ git log dandv/blead
 
 If you approve of a specific commit, you can cherry pick it:
 
-  % git cherry-pick 3adac458cb1c1d41af47fc66e67b49c8dec2323f
+  $ git cherry-pick 3adac458cb1c1d41af47fc66e67b49c8dec2323f
 
 Or you could just merge the whole branch if you like it all:
 
-  % git merge dandv/blead
+  $ git merge dandv/blead
 
 And then push back to the repository:
 
-  % git push
+  $ git push
 
 
 =head1 TOPIC BRANCHES AND REWRITING HISTORY
@@ -852,7 +852,7 @@ Maintenance versions should only be altered to add critical bug fixes.
 To commit to a maintenance version of perl, you need to create a local
 tracking branch:
 
-  % git checkout --track -b maint-5.005 origin/maint-5.005
+  $ git checkout --track -b maint-5.005 origin/maint-5.005
 
 This creates a local branch named C<maint-5.005>, which tracks the
 remote branch C<origin/maint-5.005>. Then you can pull, commit, merge
