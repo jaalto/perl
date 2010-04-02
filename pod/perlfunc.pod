@@ -3952,11 +3952,11 @@ the command line:
 
 or programmatically via the C<Config> module:
 
-       use Config;
-       print $Config{shortsize},    "\n";
-       print $Config{intsize},      "\n";
-       print $Config{longsize},     "\n";
-       print $Config{longlongsize}, "\n";
+    use Config;
+    print $Config{shortsize},    "\n";
+    print $Config{intsize},      "\n";
+    print $Config{longsize},     "\n";
+    print $Config{longlongsize}, "\n";
 
 C<$Config{longlongsize}> is undefined on systems without 
 long long support.
