@@ -1178,8 +1178,11 @@ characters equivalent to their ASCII counterparts.  For example, the
 following will print "Yes indeed\n" on either an ASCII or EBCDIC computer:
 
     $all_byte_chrs = '';
-    for (0..255) { $all_byte_chrs .= chr($_); }
+
+    for (0..255) { $all_byte_chrs .= chr($_) }
+
     $uuencode_byte_chrs = pack('u', $all_byte_chrs);
+
     ($uu = <<'ENDOFHEREDOC') =~ s/^\s*//gm;
     M``$"`P0%!@<("0H+#`T.#Q`1$A,4%187&!D:&QP='A\@(2(C)"4F)R@I*BLL
     M+2XO,#$R,S0U-C<X.3H[/#T^/T!!0D-$149'2$E*2TQ-3D]045)35%565UA9
@@ -1188,10 +1191,13 @@ following will print "Yes indeed\n" on either an ASCII or EBCDIC computer:
     MM+6VM[BYNKN\O;Z_P,'"P\3%QL?(R<K+S,W.S]#1TM/4U=;7V-G:V]S=WM_@
     ?X>+CY.7FY^CIZNOL[>[O\/'R\_3U]O?X^?K[_/W^_P``
     ENDOFHEREDOC
+
     if ($uuencode_byte_chrs eq $uu) {
         print "Yes ";
     }
+
     $uudecode_byte_chrs = unpack('u', $uuencode_byte_chrs);
+
     if ($uudecode_byte_chrs eq $all_byte_chrs) {
         print "indeed\n";
     }
@@ -1199,7 +1205,7 @@ following will print "Yes indeed\n" on either an ASCII or EBCDIC computer:
 Here is a very spartan uudecoder that will work on EBCDIC provided
 that the @e2a array is filled in appropriately:
 
-    #!/usr/local/bin/perl
+    #!/usr/bin/perl
     @e2a = ( # this must be filled in
            );
 
@@ -1214,7 +1220,7 @@ that the @e2a array is filled in appropriately:
         print OUT unpack("u", $_);
     }
 
-    close(OUT);
+    close OUT;
     chmod oct($mode), $file;
 
 =head2 Quoted-Printable encoding and decoding
