@@ -3513,10 +3513,14 @@ them, and automatically close whenever and however you leave that scope:
     sub read_myfile_munged {
         my $ALL = shift;
         my $handle = IO::File->new;
-        open($handle, "myfile") or die "myfile: $!";
+
+        open( $handle, "<", "myfile"  or die "myfile: $!";
+
         $first = <$handle>
             or return ();     # Automatically closed here.
+
         mung $first or die "mung failed";  # Or here.
+
         return $first, <$handle> if $ALL;  # Or here.
         $first;          # Or here.
     }
