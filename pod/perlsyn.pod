@@ -911,25 +911,25 @@ to cause line number collisions in code you'd like to debug later.
 Here are some examples that you should be able to type into your command
 shell:
 
-    % perl
+    $ perl
     # line 200 "bzzzt"
     # the `#' on the previous line must be the first char on line
     die 'foo';
     __END__
     foo at bzzzt line 201.
 
-    % perl
+    $ perl
     # line 200 "bzzzt"
     eval qq[\n#line 2001 ""\ndie 'foo']; print $@;
     __END__
     foo at - line 2001.
 
-    % perl
+    $ perl
     eval qq[\n#line 200 "foo bar"\ndie 'foo']; print $@;
     __END__
     foo at foo bar line 200.
 
-    % perl
+    $ perl
     # line 345 "goop"
     eval "\n#line " . __LINE__ . ' "' . __FILE__ ."\"\ndie 'foo'";
     print $@;
