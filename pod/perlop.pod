@@ -662,7 +662,8 @@ to get all normal letters of the English alphabet, or
 
 to get a hexadecimal digit, or
 
-    @z2 = ('01' .. '31');  print $z2[$mday];
+    @z2 = ('01' .. '31');
+    print $z2[$mday];
 
 to get dates with leading zeros.
 
