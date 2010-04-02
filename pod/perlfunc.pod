@@ -4525,7 +4525,7 @@ C<$!> when you are reading from filehandles you don't trust, such as a
 tty or a socket.  The following example uses the operator form of
 C<readline> and dies if the result is not defined.
 
-    while ( ! eof($fh) ) {
+    while ( ! eof $fh ) {
         defined( $_ = <$fh> ) or die "readline failed: $!";
         ...
     }
