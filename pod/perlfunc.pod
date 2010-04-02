@@ -4604,9 +4604,12 @@ normally use this command:
     # (warning: assumes no { or } in strings)
     LINE: while (<STDIN>) {
         while (s|({.*}.*){.*}|$1 |) {}
+
         s|{.*}| |;
+
         if (s|{.*| |) {
             $front = $_;
+
             while (<STDIN>) {
                 if (/}/) {  # end of comment?
                     s|^|$front\{|;
@@ -4614,6 +4617,7 @@ normally use this command:
                 }
             }
         }
+
         print;
     }
 
