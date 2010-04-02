@@ -4724,32 +4724,38 @@ caveat that lexical variables in the invoking script will be invisible
 to the included code.  Has semantics similar to the following subroutine:
 
     sub require {
-       my ($filename) = @_;
-       if (exists $INC{$filename}) {
-           return 1 if $INC{$filename};
-           die "Compilation failed in require";
-       }
-       my ($realfilename,$result);
-       ITER: {
-           foreach $prefix (@INC) {
-               $realfilename = "$prefix/$filename";
-               if (-f $realfilename) {
-                   $INC{$filename} = $realfilename;
-                   $result = do $realfilename;
-                   last ITER;
-               }
-           }
-           die "Can't find $filename in \@INC";
-       }
-       if ($@) {
-           $INC{$filename} = undef;
-           die $@;
-       } elsif (!$result) {
-           delete $INC{$filename};
-           die "$filename did not return true value";
-       } else {
-           return $result;
-       }
+	my ($filename) = @_;
+
+	if (exists $INC{$filename}) {
+	    return 1 if $INC{$filename};
+	    die "Compilation failed in require";
+	}
+
+	my ($realfilename, $result);
+
+	ITER: {
+	    foreach $prefix (@INC) {
+		$realfilename = "$prefix/$filename";
+
+		if (-f $realfilename) {
+		    $INC{$filename} = $realfilename;
+		    $result = do $realfilename;
+		    last ITER;
+		}
+	    }
+
+	    die "Can't find $filename in \@INC";
+	}
+
+	if ($@) {
+	    $INC{$filename} = undef;
+	    die $@;
+	} elsif (!$result) {
+	    delete $INC{$filename};
+	    die "$filename did not return true value";
+	} else {
+	    return $result;
+	}
     }
 
 Note that the file will not be included twice under the same specified
