@@ -684,9 +684,11 @@ For example, here's one way to count how many times a particular
 string occurs in an array:
 
     my $count = 0;
+
     for (@array) {
 	when ("foo") { ++$count }
     }
+
     print "\@array contains $count copies of 'foo'\n";
 
 At the end of all C<when> blocks, there is an implicit C<next>.
