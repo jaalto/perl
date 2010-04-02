@@ -5794,11 +5794,13 @@ much use otherwise.
 
 Example:
 
-    open(PASSWD, '/etc/passwd');
-    while (<PASSWD>) {
+    open my $PASSWD, '<', '/etc/passwd'  or die "$!";
+
+    while (<$PASSWD>) {
         chomp;
+
         ($login, $passwd, $uid, $gid,
-         $gcos, $home, $shell) = split(/:/);
+         $gcos, $home, $shell) = split /:/;
         #...
     }
 
