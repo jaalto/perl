@@ -5754,7 +5754,7 @@ both with an empty trailing field.
 
 The LIMIT parameter can be used to split a line partially
 
-    ($login, $passwd, $remainder) = split(/:/, $_, 3);
+    ($login, $passwd, $remainder) = split /:/, $_, 3;
 
 When assigning to a list, if LIMIT is omitted, or zero, Perl supplies
 a LIMIT one larger than the number of variables in the list, to avoid
@@ -5765,7 +5765,7 @@ into more fields than you really need.
 If the PATTERN contains parentheses, additional list elements are
 created from each matching substring in the delimiter.
 
-    split(/([,-])/, "1-10,20", 3);
+    split /([,-])/, "1-10,20", 3;
 
 produces the list value
 
