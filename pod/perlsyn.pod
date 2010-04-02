@@ -538,7 +538,7 @@ The keywords C<given> and C<when> are analogous
 to C<switch> and C<case> in other languages, so the code
 above could be written as
 
-    given($_) {
+    given ($_) {
 	when (/^abc/) { $abc = 1; }
 	when (/^def/) { $def = 1; }
 	when (/^xyz/) { $xyz = 1; }
@@ -548,7 +548,7 @@ above could be written as
 This construct is very flexible and powerful. For example:
 
     use feature ":5.10";
-    given($foo) {
+    given ($foo) {
 	when (undef) {
 	    say '$foo is undefined';
 	}
