@@ -566,6 +566,7 @@ you opened whatever your kid writes to his STDOUT.
 
     do {
 	$pid = open(KID_TO_WRITE, "|-");
+
 	unless (defined $pid) {
 	    warn "cannot fork: $!";
 	    die "bailing out" if $sleep_count++ > 6;
@@ -578,11 +579,14 @@ you opened whatever your kid writes to his STDOUT.
 	close(KID_TO_WRITE) || warn "kid exited $?";
     } else {     # child
 	($EUID, $EGID) = ($UID, $GID); # suid progs only
+
 	open (FILE, "> /safe/file")
 	    || die "can't open /safe/file: $!";
+
 	while (<STDIN>) {
 	    print FILE; # child's STDIN is parent's KID_TO_WRITE
 	}
+
 	exit;  # don't forget this
     }
 
@@ -621,6 +625,7 @@ And here's a safe pipe open for writing:
 	for (@data) {
 	    print KID_TO_WRITE;
 	}
+
 	close(KID_TO_WRITE) || warn "kid exited $?";
 
     } else {     # child
@@ -642,6 +647,7 @@ writer.  Consider this code:
 
     $pid = open WRITER, "|-";
     defined $pid or die "fork failed; $!";
+
     if ($pid) {
         if (my $sub_pid = fork()) {
             close WRITER;
@@ -674,8 +680,10 @@ open() which sets one file descriptor to another, as below:
     pipe(READER, WRITER);
     $pid = fork();
     defined $pid or die "fork failed; $!";
+
     if ($pid) {
 	close READER;
+
         if (my $sub_pid = fork()) {
             close WRITER;
         }
