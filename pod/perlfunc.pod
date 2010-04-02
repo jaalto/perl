@@ -480,6 +480,7 @@ modulo the caveats given in L<perlipc/"Signals">.
         $nread = sysread SOCKET, $buffer, $size;
         alarm 0;
     };
+
     if ($@) {
         die unless $@ eq "alarm\n";   # propagate unexpected errors
         # timed out
