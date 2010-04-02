@@ -2340,9 +2340,10 @@ IPs that the connection might have come in on.
     use Socket;
     $mysockaddr = getsockname(SOCK);
     ($port, $myaddr) = sockaddr_in($mysockaddr);
+
     printf "Connect to %s [%s]\n",
-       scalar gethostbyaddr($myaddr, AF_INET),
-       inet_ntoa($myaddr);
+        scalar gethostbyaddr($myaddr, AF_INET),
+        inet_ntoa($myaddr);
 
 =item getsockopt SOCKET,LEVEL,OPTNAME
 X<getsockopt>
