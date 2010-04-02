@@ -5375,6 +5375,7 @@ May be interrupted if the process receives a signal such as C<SIGALRM>.
         local $SIG{ALARM} = sub { die "Alarm!\n" };
         sleep;
     };
+
     die $@ unless $@ eq "Alarm!\n";
 
 You probably cannot mix C<alarm> and C<sleep> calls, because C<sleep>
