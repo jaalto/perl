@@ -2460,7 +2460,7 @@ The gcc option C<-Wdeclaration-after-statements> scans for such problems
 
 Introducing variables inside for()
 
-  for(int i = ...; ...; ...) {    /* BAD */
+  for (int i = ...; ...; ...) {    /* BAD */
 
 That is C99 or C++.  While it would indeed be awfully nice to have that
 also in C89, to limit the scope of the loop variable, alas, we cannot.
