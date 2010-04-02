@@ -6263,7 +6263,7 @@ Because the mode contains both the file type and its permissions, you
 should mask off the file type portion and (s)printf using a C<"%o">
 if you want to see the real permissions.
 
-    $mode = (stat($filename))[2];
+    $mode = (stat $filename)[2];
     printf "Permissions are %04o\n", $mode & 07777;
 
 In scalar context, C<stat> returns a boolean value indicating success
@@ -6273,10 +6273,13 @@ the special filehandle C<_>.
 The L<File::stat> module provides a convenient, by-name access mechanism:
 
     use File::stat;
-    $sb = stat($filename);
+    $sb = stat $filename;
+
     printf "File is %s, size is %s, perm %04o, mtime %s\n",
-           $filename, $sb->size, $sb->mode & 07777,
-           scalar localtime $sb->mtime;
+	   $filename,
+	   $sb->size,
+	   $sb->mode & 07777,
+	   scalar localtime $sb->mtime;
 
 You can import symbolic mode constants (C<S_IF*>) and functions
 (C<S_IS*>) from the Fcntl module:
