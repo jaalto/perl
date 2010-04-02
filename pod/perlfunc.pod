@@ -1632,6 +1632,7 @@ C<die> again, which has the effect of changing their error messages:
     {
        local $SIG{'__DIE__'} =
               sub { (my $x = $_[0]) =~ s/foo/bar/g; die $x };
+
        eval { die "foo lives here" };
        print $@ if $@;                # prints "bar lives here"
     }
