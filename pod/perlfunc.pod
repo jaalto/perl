@@ -1330,6 +1330,7 @@ before any manipulations.  Here's an example:
     use Scalar::Util "blessed";
 
     eval { ... ; die Some::Module::Exception->new( FOO => "bar" ) };
+
     if (my $ev_err = $@) {
         if (blessed($ev_err) && $ev_err->isa("Some::Module::Exception")) {
             # handle Some::Module::Exception
