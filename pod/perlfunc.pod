@@ -4774,22 +4774,23 @@ modules does not risk altering your namespace.
 
 In other words, if you try this:
 
-        require Foo::Bar;     # a splendid bareword
+    require Foo::Bar;     # a splendid bareword
 
 The require function will actually look for the "F<Foo/Bar.pm>" file in the
 directories specified in the C<@INC> array.
 
 But if you try this:
 
-        $class = 'Foo::Bar';
-        require $class;       # $class is not a bareword
-    #or
-        require "Foo::Bar";   # not a bareword because of the ""
+    $class = 'Foo::Bar';
+    require $class;       # $class is not a bareword
+
+    #  OR
+    require "Foo::Bar";   # not a bareword because of the ""
 
 The require function will look for the "F<Foo::Bar>" file in the @INC array and
 will complain about not finding "F<Foo::Bar>" there.  In this case you can do:
 
-        eval "require $class";
+    eval "require $class";
 
 Now that you understand how C<require> looks for files with a
 bareword argument, there is a little extra functionality going on behind
