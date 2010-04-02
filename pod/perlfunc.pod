@@ -6830,9 +6830,11 @@ C<each> function to iterate over such.  Example:
     # print out history file offsets
     use NDBM_File;
     tie(%HIST, 'NDBM_File', '/usr/lib/news/history', 1, 0);
-    while (($key,$val) = each %HIST) {
+
+    while ( my($key,$val) = each %HIST ) {
         print $key, ' = ', unpack('L',$val), "\n";
     }
+
     untie(%HIST);
 
 A class implementing a hash should have the following methods:
