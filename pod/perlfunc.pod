@@ -5058,7 +5058,7 @@ seek whenever you switch between reading and writing.  Amongst other
 things, this may have the effect of calling stdio's clearerr(3).
 A WHENCE of C<1> (C<SEEK_CUR>) is useful for not moving the file position:
 
-    seek(TEST,0,1);
+    seek(TEST, 0, 1);
 
 This is also useful for applications emulating C<tail -f>.  Once you hit
 EOF on your read and then sleep for a while, you (probably) have to stick in a
@@ -5070,10 +5070,12 @@ If that doesn't work (some I/O implementations are particularly
 cantankerous), you might need something like this:
 
     for (;;) {
-        for ($curpos = tell(FILE); $_ = <FILE>;
-             $curpos = tell(FILE)) {
+        for ($curpos = tell(FILE);		# One
+	     $_ = <FILE>;			# Two
+	     $curpos = tell(FILE)) {		# Three
             # search for some stuff and put it into files
         }
+
         sleep($for_a_while);
         seek(FILE, $curpos, 0);
     }
