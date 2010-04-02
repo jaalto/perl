@@ -1167,9 +1167,12 @@ Examples:
 
     print if defined $switch{'D'};
     print "$val\n" while defined($val = pop(@ary));
+
     die "Can't readlink $sym: $!"
         unless defined($value = readlink $sym);
+
     sub foo { defined &$bar ? &$bar(@_) : die "No bar"; }
+
     $debugging = 0 unless defined $debugging;
 
 Note:  Many folks tend to overuse C<defined>, and then are surprised to
