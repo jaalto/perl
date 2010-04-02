@@ -738,7 +738,7 @@ The core L<Devel::Peek|Devel::Peek> module lets us examine SVs from a
 Perl program. Let's see, for instance, how Perl treats the constant
 C<"hello">.
 
-      % perl -MDevel::Peek -e 'Dump("hello")'
+      $ perl -MDevel::Peek -e 'Dump("hello")'
     1 SV = PV(0xa041450) at 0xa04ecbc
     2   REFCNT = 1
     3   FLAGS = (POK,READONLY,pPOK)
@@ -852,7 +852,7 @@ and L<B::Debug|B::Debug> do.
 
 Let's have a look at how Perl sees C<$a = $b + $c>:
 
-     % perl -MO=Terse -e '$a=$b+$c'
+     $ perl -MO=Terse -e '$a=$b+$c'
      1  LISTOP (0x8179888) leave
      2      OP (0x81798b0) enter
      3      COP (0x8179850) nextstate
@@ -929,7 +929,7 @@ to the next op to be run, so following these pointers tells us how perl
 executes the code. We can traverse the tree in this order using
 the C<exec> option to C<B::Terse>:
 
-     % perl -MO=Terse,exec -e '$a=$b+$c'
+     $ perl -MO=Terse,exec -e '$a=$b+$c'
      1  OP (0x8179928) enter
      2  COP (0x81798c8) nextstate
      3  SVOP (0x81796c8) gvsv  GV (0x80fa4d4) *b
