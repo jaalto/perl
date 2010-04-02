@@ -6937,7 +6937,7 @@ X<times>
 Returns a four-element list giving the user and system times, in
 seconds, for this process and the children of this process.
 
-    ($user,$system,$cuser,$csystem) = times;
+    ($user, $system, $cuser, $csystem) = times;
 
 In scalar context, C<times> returns C<$user>.
 
