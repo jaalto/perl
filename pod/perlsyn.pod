@@ -341,9 +341,9 @@ or C<?pat?> one-time matches:
 
     # inspired by :1,$g/fred/s//WILMA/
     while (<>) {
-	?(fred)?    && s//WILMA $1 WILMA/;
-	?(barney)?  && s//BETTY $1 BETTY/;
-	?(homer)?   && s//MARGE $1 MARGE/;
+	?(fred)?    and  s//WILMA $1 WILMA/;
+	?(barney)?  and  s//BETTY $1 BETTY/;
+	?(homer)?   and  s//MARGE $1 MARGE/;
     } continue {
 	print "$ARGV $.: $_";
 	close ARGV  if eof();		# reset $.
@@ -647,7 +647,7 @@ is applied recursively to the first argument.
 These rules look complicated, but usually they will do what
 you want. For example you could write:
 
-    when (/^\d+$/ && $_ < 75) { ... }
+    when (/^\d+$/ and $_ < 75) { ... }
 
 Another useful shortcut is that, if you use a literal array
 or hash as the argument to C<given>, it is turned into a
