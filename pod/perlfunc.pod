@@ -3119,12 +3119,12 @@ binary string.  Leading whitespace is ignored in all three cases.)
 The following will handle decimal, binary, octal, and hex in standard
 Perl notation:
 
-    $val = oct($val) if $val =~ /^0/;
+    $val = oct $val  if $val =~ /^0/;
 
 If EXPR is omitted, uses C<$_>.   To go the other way (produce a number
 in octal), use sprintf() or printf():
 
-    $dec_perms = (stat("filename"))[2] & 07777;
+    $dec_perms = (stat "filename")[2] & 07777;
     $oct_perm_str = sprintf "%o", $perms;
 
 The oct() function is commonly used when a string such as C<644> needs
