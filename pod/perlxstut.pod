@@ -168,7 +168,7 @@ one level and the lines following one more level.
 Now we'll run "C<perl Makefile.PL>".  This will create a real Makefile,
 which make needs.  Its output looks something like:
 
-    % perl Makefile.PL
+    $ perl Makefile.PL
     Checking if your kit is complete...
     Looks good
     Writing Makefile for Mytest
@@ -178,7 +178,7 @@ Now, running make will produce output that looks something like this (some
 long lines have been shortened for clarity and some extraneous lines have
 been deleted):
 
-    % make
+    $ make
     cp lib/Mytest.pm blib/lib/Mytest.pm
     perl xsubpp  -typemap typemap  Mytest.xs > Mytest.xsc && mv Mytest.xsc Mytest.c
     Please specify prototyping behavior for Mytest.xs (see perlxs manual)
@@ -221,7 +221,7 @@ that looks like this:
 Now we make the script executable (C<chmod +x hello>), run the script
 and we should see the following output:
 
-    % ./hello
+    $ ./hello
     Hello, world!
     %
 
@@ -560,7 +560,7 @@ on Win32 systems.
 We will now create the main top-level Mytest2 files.  Change to the directory
 above Mytest2 and run the following command:
 
-	% h2xs -O -n Mytest2 ./Mytest2/mylib/mylib.h
+	$ h2xs -O -n Mytest2 ./Mytest2/mylib/mylib.h
 
 This will print out a warning about overwriting Mytest2, but that's okay.
 Our files are stored in Mytest2/mylib, and will be untouched.
