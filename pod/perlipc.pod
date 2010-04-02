@@ -1016,20 +1016,23 @@ go back to service a new client.
 
     sub REAPER {
         local $!;   # don't let waitpid() overwrite current error
-        while ((my $pid = waitpid(-1,WNOHANG)) > 0 && WIFEXITED($?)) {
+
+        while ((my $pid = waitpid -1, WNOHANG) > 0 && WIFEXITED($?)) {
             logmsg "reaped $waitedpid" . ($? ? " with exit $?" : '');
         }
+
         $SIG{CHLD} = \&REAPER;  # loathe SysV
     }
 
     $SIG{CHLD} = \&REAPER;
 
-    while(1) {
+    while (1) {
         $paddr = accept(Client, Server) || do {
             # try again if accept() returned because a signal was received
             next if $!{EINTR};
             die "accept: $!";
         };
+
         my ($port, $iaddr) = sockaddr_in($paddr);
         my $name = gethostbyaddr($iaddr, AF_INET);
 
@@ -1043,30 +1046,33 @@ go back to service a new client.
             exec '/usr/games/fortune'       # XXX: `wrong' line terminators
                 or confess "can't exec fortune: $!";
         };
+
         close Client;
     }
 
     sub spawn {
         my $coderef = shift;
 
-        unless (@_ == 0 && $coderef && ref($coderef) eq 'CODE') {
+        unless (@_ == 0 and $coderef and ref($coderef) eq 'CODE') {
             confess "usage: spawn CODEREF";
         }
 
         my $pid;
+
         if (! defined($pid = fork)) {
             logmsg "cannot fork: $!";
             return;
-        } 
+        }
         elsif ($pid) {
             logmsg "begat $pid";
             return; # I'm the parent
         }
         # else I'm the child -- go spawn
 
-        open(STDIN,  "<&Client")   || die "can't dup client to stdin";
-        open(STDOUT, ">&Client")   || die "can't dup client to stdout";
-        ## open(STDERR, ">&STDOUT") || die "can't dup stdout to stderr";
+        open STDIN,  "<&", Client"    or die "can't dup client to stdin";
+        open STDOUT, ">&", "Client"   or die "can't dup client to stdout";
+        # open STDERR, ">&", "STDOUT" or die "can't dup stdout to stderr";
+
         exit &$coderef();
     }
 
