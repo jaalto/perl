@@ -6496,7 +6496,8 @@ a 'magic bullet'; each time it is assigned to, it remembers which part
 of the original string is being modified; for example:
 
     $x = '1234';
-    for (substr($x,1,2)) {
+
+    for (substr $x, 1, 2) {
         $_ = 'a';   print $x,"\n";    # prints 1a4
         $_ = 'xyz'; print $x,"\n";    # prints 1xyz4
         $x = '56789';
