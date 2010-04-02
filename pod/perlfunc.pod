@@ -5103,6 +5103,7 @@ do the following:
 
     select(REPORT1);
     $^ = 'report1_top';
+
     select(REPORT2);
     $^ = 'report2_top';
 
