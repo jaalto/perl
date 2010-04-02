@@ -7162,7 +7162,7 @@ Does the opposite of a C<shift>.  Or the opposite of a C<push>,
 depending on how you look at it.  Prepends list to the front of the
 array, and returns the new number of elements in the array.
 
-    unshift(@ARGV, '-e') unless $ARGV[0] =~ /^-/;
+    unshift @ARGV, '-e'   unless $ARGV[0] =~ /^-/;
 
 Note the LIST is prepended whole, not one element at a time, so the
 prepended elements stay in the same order.  Use C<reverse> to do the
