@@ -6408,15 +6408,19 @@ scans a list of files (C<@files>) for a list of words (C<@words>), and prints
 out the names of those files that contain a match:
 
     $search = 'while (<>) { study;';
-    foreach $word (@words) {
+
+    for my $word (@words) {
         $search .= "++\$seen{\$ARGV} if /\\b$word\\b/;\n";
     }
+
     $search .= "}";
     @ARGV = @files;
+
     undef $/;
-    eval $search;        # this screams
+    eval $search;     # this screams
     $/ = "\n";        # put back to normal input delimiter
-    foreach $file (sort keys(%seen)) {
+
+    for my $file (sort keys %seen) {
         print $file, "\n";
     }
 
