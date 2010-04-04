@@ -1376,11 +1376,11 @@ one's code page.  See also L<chcp>.
 
 For sequential data set access try:
 
-    my @ds_records = `cat //DSNAME`;
+    my @ds_records = qx(cat //DSNAME);
 
 or:
 
-    my @ds_records = `cat //'HLQ.DSNAME'`;
+    my @ds_records = qx(cat //'HLQ.DSNAME');
 
 See also the OS390::Stdio module on CPAN.
 
