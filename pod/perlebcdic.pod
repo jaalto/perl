@@ -252,7 +252,7 @@ work with a pod2_other_format translation) through:
 
 =back
 
-    perl -ne 'if (/(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/)' \
+    $ perl -ne 'if (/(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/)' \
      -e '{printf("%s%-9o%-9o%-9o%o\n",$1,$2,$3,$4,$5)}' perlebcdic.pod
 
 If you want to retain the UTF-x code points then in script form you
@@ -288,7 +288,7 @@ run the table through:
 
 =back
 
-    perl -ne 'if (/(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/)' \
+    $ perl -ne 'if (/(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/)' \
      -e '{printf("%s%-9X%-9X%-9X%X\n",$1,$2,$3,$4,$5)}' perlebcdic.pod
 
 Or, in order to retain the UTF-x code points in hexadecimal:
@@ -585,7 +585,7 @@ ASCII + Latin-1 order then run the table through:
 
 =back
 
-    perl -ne 'if (/.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/)'\
+    $ perl -ne 'if (/.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/)'\
      -e '{push(@l,$_)}' \
      -e 'END{print map{$_->[0]}' \
      -e '          sort{$a->[1] <=> $b->[1]}' \
@@ -600,7 +600,7 @@ If you would rather see it in CCSID 1047 order then change the digit
 
 =back
 
-    perl -ne 'if (/.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/)'\
+    $ perl -ne 'if (/.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/)'\
      -e '{push(@l,$_)}' \
      -e 'END{print map{$_->[0]}' \
      -e '          sort{$a->[1] <=> $b->[1]}' \
@@ -615,7 +615,7 @@ If you would rather see it in POSIX-BC order then change the digit
 
 =back
 
-    perl -ne 'if (/.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/)'\
+    $ perl -ne 'if (/.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/)'\
      -e '{push(@l,$_)}' \
      -e 'END{print map{$_->[0]}' \
      -e '          sort{$a->[1] <=> $b->[1]}' \
@@ -1285,7 +1285,7 @@ work on ASCII and EBCDIC platforms:
 
 In one-liner form:
 
-    perl -ne 'tr/n-za-mN-ZA-M/a-zA-Z/;print'
+    $ perl -ne 'tr/n-za-mN-ZA-M/a-zA-Z/;print'
 
 =head1 Hashing order and checksums
 
