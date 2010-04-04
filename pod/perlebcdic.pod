@@ -1227,17 +1227,23 @@ Here is a very spartan uudecoder that will work on EBCDIC provided
 that the @e2a array is filled in appropriately:
 
     #!/usr/bin/perl
+
     @e2a = ( # this must be filled in
 	   );
 
-    $_ = <> until ($mode,$file) = /^begin\s*(\d*)\s*(\S*)/;
-    open OUT, ">", $file" if $file ne "";
+    my ($mode, $file);
 
-    while (<>) {
+    $_ = <> until ($mode, $file) = /^begin\s*(\d*)\s*(\S*)/;
+
+    open OUT, ">", $file"    if  $file ne "";
+
+    while ( <> ) {
 	last if /^end/;
 	next if /[a-z]/;
+
 	next unless int(((($e2a[ord()] - 32 ) & 077) + 2) / 3) ==
 	    int(length() / 4);
+
 	print OUT unpack("u", $_);
     }
 
