@@ -205,7 +205,7 @@ sometimes enough to test it against both numeric 0 and also lexical
 "0" (although this will cause noises if warnings are on).  That's 
 because strings that aren't numbers count as 0, just as they do in B<awk>:
 
-    if ($str == 0 && $str ne "0")  {
+    if ($str == 0   and   $str ne "0")  {
 	warn "That doesn't look like a number";
     }
 
