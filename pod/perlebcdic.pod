@@ -1159,6 +1159,7 @@ Conversely, here is a partial solution for the task of encoding such
 a URL under the 1047 code page:
 
     $url = 'http://www.pvhp.com/~pvhp/';
+
     # this array assumes code page 1047
     my @e2a_1047 = (
 	  0,  1,  2,  3,156,  9,134,127,151,141,142, 11, 12, 13, 14, 15,
@@ -1178,9 +1179,11 @@ a URL under the 1047 code page:
 	 92,247, 83, 84, 85, 86, 87, 88, 89, 90,178,212,214,210,211,213,
 	 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,179,219,220,217,218,159
     );
+
     # The following regular expression does not address the
     # mappings for: ('.' => '%2E', '/' => '%2F', ':' => '%3A')
-    $url =~ s/([\t "#%&\(\),;<=>\?\@\[\\\]^`{|}~])/sprintf("%%%02X",$e2a_1047[ord($1)])/ge;
+
+    $url =~ s/([\t "#%&\(\),;<=>\?\@\[\\\]^`{|}~])/sprintf("%%%02X", $e2a_1047[ord $1])/ge;
 
 where a more complete solution would split the URL into components
 and apply a full s/// substitution only to the appropriate parts.
