@@ -264,7 +264,7 @@ might want to write:
 
 =back
 
-    open my $FH, "<", perlebcdic.pod"    or  die "Could not open perlebcdic.pod: $!";
+    open my $FH, "<", "perlebcdic.pod"    or  die "Could not open perlebcdic.pod: $!";
 
     while ( <$FH> ) {
 	if ( /(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\.?(\d*)\s+(\d+)\.?(\d*)/ )  {
@@ -290,8 +290,8 @@ run the table through:
 
 =back
 
-    $ perl -ne 'if (/(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/)' \
-     -e '{printf("%s%-9X%-9X%-9X%X\n",$1,$2,$3,$4,$5)}' perlebcdic.pod
+    $ perl -ne 'if ( /(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/ )' \
+     -e '{ printf("%s%-9X%-9X%-9X%X\n", $1, $2, $3, $4, $5) }' perlebcdic.pod
 
 Or, in order to retain the UTF-x code points in hexadecimal:
 
