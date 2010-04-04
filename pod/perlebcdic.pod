@@ -301,17 +301,19 @@ Or, in order to retain the UTF-x code points in hexadecimal:
 
 =back
 
-    open(FH,"<perlebcdic.pod") or die "Could not open perlebcdic.pod: $!";
-    while (<FH>) {
-	if (/(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\.?(\d*)\s+(\d+)\.?(\d*)/)  {
-	    if ($7 ne '' && $9 ne '') {
-		printf("%s%-9X%-9X%-9X%-9X%-2X.%-6X%-2X.%X\n",$1,$2,$3,$4,$5,$6,$7,$8,$9);
+    open my $FH, "<", "perlebcdic.pod"    or  die "Could not open perlebcdic.pod: $!";
+
+    while ( <FH> ) {
+	if ( /(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\.?(\d*)\s+(\d+)\.?(\d*)/ )  {
+
+	    if ($7 ne ''  and   $9 ne '') {
+		printf("%s%-9X%-9X%-9X%-9X%-2X.%-6X%-2X.%X\n", $1, $2, $3, $4, $5, $6, $7, $8, $9);
 	    }
 	    elsif ($7 ne '') {
-		printf("%s%-9X%-9X%-9X%-9X%-2X.%-6X%X\n",$1,$2,$3,$4,$5,$6,$7,$8);
+		printf("%s%-9X%-9X%-9X%-9X%-2X.%-6X%X\n", $1, $2, $3, $4, $5, $6, $7, $8);
 	    }
 	    else {
-		printf("%s%-9X%-9X%-9X%-9X%-9X%X\n",$1,$2,$3,$4,$5,$6,$8);
+		printf("%s%-9X%-9X%-9X%-9X%-9X%X\n", $1, $2, $3, $4, $5, $6, $8);
 	    }
 	}
     }
