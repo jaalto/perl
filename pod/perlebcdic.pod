@@ -1273,8 +1273,10 @@ array is omitted for brevity):
 	$delete = "\x07";    # EBCDIC
 	@e2a =               # EBCDIC to ASCII map (as shown above)
     }
+
     $qp_string =~
-      s/([^ !"\#\$%&'()*+,\-.\/0-9:;<>?\@A-Z[\\\]^_`a-z{|}~$delete])/sprintf("=%02X",$e2a[ord($1)])/ge;
+      s{([^ !"\#\$%&'()*+,\-.\/0-9:;<>?\@A-Z[\\\]^_`a-z{|}~$delete])}
+       {sprintf("=%02X", $e2a[ord $1])}ge;
 
 (although in production code the substitutions might be done
 in the EBCDIC branch with the @e2a array and separately in the
