@@ -264,17 +264,19 @@ might want to write:
 
 =back
 
-    open(FH,"<perlebcdic.pod") or die "Could not open perlebcdic.pod: $!";
-    while (<FH>) {
-	if (/(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\.?(\d*)\s+(\d+)\.?(\d*)/)  {
-	    if ($7 ne '' && $9 ne '') {
-		printf("%s%-9o%-9o%-9o%-9o%-3o.%-5o%-3o.%o\n",$1,$2,$3,$4,$5,$6,$7,$8,$9);
+    open my $FH, "<", perlebcdic.pod"    or  die "Could not open perlebcdic.pod: $!";
+
+    while ( <$FH> ) {
+	if ( /(.{33})(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\.?(\d*)\s+(\d+)\.?(\d*)/ )  {
+
+	    if ($7 ne ''  and  $9 ne '') {
+		printf("%s%-9o%-9o%-9o%-9o%-3o.%-5o%-3o.%o\n", $1, $2, $3, $4, $5, $6, $7, $8, $9);
 	    }
 	    elsif ($7 ne '') {
-		printf("%s%-9o%-9o%-9o%-9o%-3o.%-5o%o\n",$1,$2,$3,$4,$5,$6,$7,$8);
+		printf("%s%-9o%-9o%-9o%-9o%-3o.%-5o%o\n", $1, $2, $3, $4, $5, $6, $7, $8);
 	    }
 	    else {
-		printf("%s%-9o%-9o%-9o%-9o%-9o%o\n",$1,$2,$3,$4,$5,$6,$8);
+		printf("%s%-9o%-9o%-9o%-9o%-9o%o\n", $1, $2, $3, $4, $5, $6, $8);
 	    }
 	}
     }
