@@ -885,7 +885,7 @@ mixed case strings.  This is discussed in more detail below.
 See the discussion of printf() above.  An example of the use
 of sprintf would be:
 
-    $CAPITAL_LETTER_A = sprintf("%c",193);
+    $CAPITAL_LETTER_A = sprintf "%c", 193;
 
 =item unpack()
 
