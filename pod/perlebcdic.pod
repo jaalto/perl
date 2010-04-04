@@ -589,11 +589,11 @@ ASCII + Latin-1 order then run the table through:
 
 =back
 
-    $ perl -ne 'if (/.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/)'\
-     -e '{push(@l,$_)}' \
-     -e 'END{print map{$_->[0]}' \
-     -e '          sort{$a->[1] <=> $b->[1]}' \
-     -e '          map{[$_,substr($_,42,3)]}@l;}' perlebcdic.pod
+    $ perl -ne 'if ( /.{33}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}\s{6,8}\d{1,3}/ )'\
+     -e '{ push @l, $_ }' \
+     -e 'END { print map  { $_->[0] }' \
+     -e '            sort { $a->[1] <=> $b->[1] }' \
+     -e '            map  { [$_, substr($_,42,3)]} @l }' perlebcdic.pod
 
 If you would rather see it in CCSID 1047 order then change the digit
 42 in the last line to 51, like this:
