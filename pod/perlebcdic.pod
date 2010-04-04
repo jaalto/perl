@@ -1195,11 +1195,14 @@ The C<u> template to pack() or unpack() will render EBCDIC data in EBCDIC
 characters equivalent to their ASCII counterparts.  For example, the
 following will print "Yes indeed\n" on either an ASCII or EBCDIC computer:
 
-    $all_byte_chrs = '';
+    $all_byte_chrs = "";
 
-    for (0..255) { $all_byte_chrs .= chr($_) }
+    for ( 0..255 ) {
+    	$all_byte_chrs .= chr $_;
 
-    $uuencode_byte_chrs = pack('u', $all_byte_chrs);
+    }
+
+    $uuencode_byte_chrs = pack "u", $all_byte_chrs;
 
     ($uu = <<'ENDOFHEREDOC') =~ s/^\s*//gm;
     M``$"`P0%!@<("0H+#`T.#Q`1$A,4%187&!D:&QP='A\@(2(C)"4F)R@I*BLL
@@ -1210,13 +1213,13 @@ following will print "Yes indeed\n" on either an ASCII or EBCDIC computer:
     ?X>+CY.7FY^CIZNOL[>[O\/'R\_3U]O?X^?K[_/W^_P``
     ENDOFHEREDOC
 
-    if ($uuencode_byte_chrs eq $uu) {
+    if ( $uuencode_byte_chrs eq $uu ) {
 	print "Yes ";
     }
 
-    $uudecode_byte_chrs = unpack('u', $uuencode_byte_chrs);
+    $uudecode_byte_chrs = unpack 'u', $uuencode_byte_chrs;
 
-    if ($uudecode_byte_chrs eq $all_byte_chrs) {
+    if ( $uudecode_byte_chrs eq $all_byte_chrs ) {
 	print "indeed\n";
     }
 
