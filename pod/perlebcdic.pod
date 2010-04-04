@@ -1132,6 +1132,7 @@ where 7E is the hexadecimal ASCII code point for '~'.  Here is an example
 of decoding such a URL under CCSID 1047:
 
     $url = 'http://www.pvhp.com/%7Epvhp/';
+
     # this array assumes code page 1047
     my @a2e_1047 = (
 	  0,  1,  2,  3, 55, 45, 46, 47, 22,  5, 21, 11, 12, 13, 14, 15,
@@ -1151,7 +1152,8 @@ of decoding such a URL under CCSID 1047:
 	 68, 69, 66, 70, 67, 71,156, 72, 84, 81, 82, 83, 88, 85, 86, 87,
 	140, 73,205,206,203,207,204,225,112,221,222,219,220,141,142,223
     );
-    $url =~ s/%([0-9a-fA-F]{2})/pack("c",$a2e_1047[hex($1)])/ge;
+
+    $url =~ s/%([0-9a-fA-F]{2})/pack("c", $a2e_1047[hex $1])/ge;
 
 Conversely, here is a partial solution for the task of encoding such
 a URL under the 1047 code page:
