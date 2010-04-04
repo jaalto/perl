@@ -1028,7 +1028,7 @@ of coded character set.  Another way to write C<Is_latin_1()> would be
 to use the characters in the range explicitly:
 
     sub Is_latin_1 {
-	my $char = substr(shift,0,1);
+	my $char = substr(shift, 0, 1);
 	$char =~ /[ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ]/;
     }
 
