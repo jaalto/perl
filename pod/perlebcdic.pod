@@ -1310,14 +1310,14 @@ work on ASCII and EBCDIC platforms:
 
     #!/usr/bin/perl
 
-    while (<>) {
+    while ( <> ) {
 	tr/n-za-mN-ZA-M/a-zA-Z/;
 	print;
     }
 
 In one-liner form:
 
-    $ perl -ne 'tr/n-za-mN-ZA-M/a-zA-Z/;print'
+    $ perl -ne 'tr/n-za-mN-ZA-M/a-zA-Z/; print'
 
 =head1 Hashing order and checksums
 
