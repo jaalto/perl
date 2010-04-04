@@ -873,7 +873,7 @@ The formats that can convert characters to numbers and vice versa
 will be different from their ASCII counterparts when executed
 on an EBCDIC platform.  Examples include:
 
-    printf("%c%c%c",193,194,195);  # prints ABC
+    printf "%c%c%c", 193, 194, 195;  # prints ABC
 
 =item sort()
 
