@@ -837,12 +837,13 @@ For example:
 The c and C templates for pack() are dependent upon character set
 encoding.  Examples of usage on EBCDIC include:
 
-    $foo = pack("CCCC",193,194,195,196);
+    $foo = pack "CCCC", 193, 194, 195, 196;
     # $foo eq "ABCD"
-    $foo = pack("C4",193,194,195,196);
+
+    $foo = pack "C4", 193, 194, 195, 196;
     # same thing
 
-    $foo = pack("ccxxcc",193,194,195,196);
+    $foo = pack "ccxxcc", 193, 194, 195, 196;
     # $foo eq "AB\0\0CD"
 
 =item print()
