@@ -1259,7 +1259,7 @@ On ASCII encoded platforms it is possible to strip characters outside of
 the printable set using:
 
     # This QP encoder works on ASCII only
-    $qp_string =~ s/([=\x00-\x1F\x80-\xFF])/sprintf("=%02X",ord($1))/ge;
+    $qp_string =~ s/([=\x00-\x1F\x80-\xFF])/sprintf("=%02X", ord $1)/ge;
 
 Whereas a QP encoder that works on both ASCII and EBCDIC platforms
 would look somewhat like the following (where the EBCDIC branch @e2a
