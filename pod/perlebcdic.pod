@@ -911,27 +911,27 @@ octal constants in regular expressions.  Consider the following
 set of subs:
 
     sub is_c0 {
-        my $char = substr(shift,0,1);
+        my $char = substr(shift, 0, 1);
         $char =~ /[\000-\037]/;
     }
 
     sub is_print_ascii {
-        my $char = substr(shift,0,1);
+        my $char = substr(shift, 0, 1);
         $char =~ /[\040-\176]/;
     }
 
     sub is_delete {
-        my $char = substr(shift,0,1);
+        my $char = substr(shift, 0, 1);
         $char eq "\177";
     }
 
     sub is_c1 {
-        my $char = substr(shift,0,1);
+        my $char = substr(shift, 0, 1);
         $char =~ /[\200-\237]/;
     }
 
     sub is_latin_1 {
-        my $char = substr(shift,0,1);
+        my $char = substr(shift, 0, 1);
         $char =~ /[\240-\377]/;
     }
 
