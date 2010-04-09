@@ -275,7 +275,7 @@ F<cpan> is a command-line interface to CPAN.pm.  It allows you to install
 modules or distributions from CPAN, or just get information about them, and
 a lot more.  It is similar to the command line mode of the L<CPAN> module,
 
-    perl -MCPAN -e shell
+    $ perl -MCPAN -e shell
 
 =item L<cpanp>
 
