@@ -115,11 +115,13 @@ C<find2perl . -user root -perm 4000 -print> produces the following callback
 subroutine for C<File::Find>:
 
     sub wanted {
-        my ($dev,$ino,$mode,$nlink,$uid,$gid);
-        (($dev,$ino,$mode,$nlink,$uid,$gid) = lstat($_)) &&
-        $uid == $uid{'root'}) &&
-        (($mode & 0777) == 04000);
-        print("$name\n");
+        my ($dev, $ino, $mode, $nlink, $uid, $gid);
+
+        ($dev, $ino, $mode, $nlink, $uid, $gid) = lstat $_  and
+        $uid == $uid{root} and
+        ($mode & 0777) == 04000;
+
+        print $name, "\n";
     }
 
 =back
