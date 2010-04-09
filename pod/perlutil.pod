@@ -23,7 +23,7 @@ The main interface to Perl's documentation is C<perldoc>, although
 if you're reading this, it's more than likely that you've already found
 it. F<perldoc> will extract and format the documentation from any file
 in the current directory, any Perl module installed on the system, or
-any of the standard documentation pages, such as this one. Use 
+any of the standard documentation pages, such as this one. Use
 C<perldoc E<lt>nameE<gt>> to get information on any of the utilities
 described in this document.
 
@@ -89,8 +89,8 @@ on the simple F<awk> script C<{print $2}> will produce a Perl program
 based around this code:
 
     while ( <> ) {
-        my ($Fld1, $Fld2) = split /[:\n]/, $_, 9999;
-        print $Fld2;
+	my ($Fld1, $Fld2) = split /[:\n]/, $_, 9999;
+	print $Fld2;
     }
 
 =item L<s2p|s2p> and L<psed>
@@ -99,9 +99,9 @@ Similarly, F<s2p> converts F<sed> scripts to Perl programs. F<s2p> run
 on C<s/foo/bar> will produce a Perl program based around this:
 
     while (<>) {
-        chomp;
-        s/foo/bar/g;
-        print if $printit;
+	chomp;
+	s/foo/bar/g;
+	print if $printit;
     }
 
 When invoked as F<psed>, it behaves as a F<sed> implementation, written in
@@ -109,25 +109,25 @@ Perl.
 
 =item L<find2perl|find2perl>
 
-Finally, F<find2perl> translates C<find> commands to Perl equivalents which 
-use the L<File::Find|File::Find> module. As an example, 
+Finally, F<find2perl> translates C<find> commands to Perl equivalents which
+use the L<File::Find|File::Find> module. As an example,
 C<find2perl . -user root -perm 4000 -print> produces the following callback
 subroutine for C<File::Find>:
 
     sub wanted {
-        my ($dev, $ino, $mode, $nlink, $uid, $gid);
+	my ($dev, $ino, $mode, $nlink, $uid, $gid);
 
-        ($dev, $ino, $mode, $nlink, $uid, $gid) = lstat $_  and
-        $uid == $uid{root} and
-        ($mode & 0777) == 04000;
+	($dev, $ino, $mode, $nlink, $uid, $gid) = lstat $_  and
+	$uid == $uid{root} and
+	($mode & 0777) == 04000;
 
-        print $name, "\n";
+	print $name, "\n";
     }
 
 =back
 
 As well as these filters for converting other languages, the
-L<pl2pm|pl2pm> utility will help you convert old-style Perl 4 libraries to 
+L<pl2pm|pl2pm> utility will help you convert old-style Perl 4 libraries to
 new-style Perl5 modules.
 
 =head2 Administration
@@ -154,7 +154,7 @@ and its libraries have been installed correctly.
 
 =head2 Development
 
-There are a set of utilities which help you in developing Perl programs, 
+There are a set of utilities which help you in developing Perl programs,
 and in particular, extending Perl with C.
 
 =over 3
