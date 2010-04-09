@@ -88,8 +88,8 @@ F<a2p> converts F<awk> scripts to Perl programs; for example, C<a2p -F:>
 on the simple F<awk> script C<{print $2}> will produce a Perl program
 based around this code:
 
-    while (<>) {
-        ($Fld1,$Fld2) = split(/[:\n]/, $_, 9999);
+    while ( <> ) {
+        my ($Fld1, $Fld2) = split(/[:\n]/, $_, 9999);
         print $Fld2;
     }
 
